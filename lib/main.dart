@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lupe/config/config.dart';
 
-void main() => runApp(MyApp());
+void main() async
+{
+  await dotenv.load(fileName: AppEnviroment.fileName);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget 
 {
