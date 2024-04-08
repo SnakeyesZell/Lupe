@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lupe/config/config.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,20 +8,9 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
     );
   }
 }
-
- 
