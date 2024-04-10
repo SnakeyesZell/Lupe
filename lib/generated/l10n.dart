@@ -59,6 +59,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Get started`
+  String get loginBottomButton {
+    return Intl.message(
+      'Get started',
+      name: 'loginBottomButton',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -67,6 +77,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'es'),
     ];
   }
 
