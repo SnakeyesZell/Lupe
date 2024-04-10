@@ -1,5 +1,7 @@
 {
     "fisrtLabel": "First Label",
 
-    "loginBottomButton": "Get started"
+    "loginBottomButton": "Get started",
+    "loginTitle": "Lupe Trips",
+    "loginSubtitle": "Share easily your experiencies around\nthe world with your travel mates"
 }

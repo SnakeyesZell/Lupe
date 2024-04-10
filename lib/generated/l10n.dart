@@ -69,6 +69,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Lupe Trips`
+  String get loginTitle {
+    return Intl.message(
+      'Lupe Trips',
+      name: 'loginTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share easily your experiencies around\nthe world with your travel mates`
+  String get loginSubtitle {
+    return Intl.message(
+      'Share easily your experiencies around\nthe world with your travel mates',
+      name: 'loginSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

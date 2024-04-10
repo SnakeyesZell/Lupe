@@ -1,5 +1,7 @@
 {
     "fisrtLabel": "Primer Texto",
 
-    "loginBottomButton": "Empecemos"
+    "loginBottomButton": "Empecemos",
+    "loginTitle": "Lupe Viajes",
+    "loginSubtitle": "Comparte fácilmente tus experiencias alrededor\ndel mundo con tus compañeros de viaje"
 }

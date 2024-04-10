@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lupe/config/assets/app_fonts.dart';
 
 class CustomPrimaryButton extends StatelessWidget 
 {
@@ -19,20 +18,15 @@ class CustomPrimaryButton extends StatelessWidget
     return GestureDetector(
       onTap: this.onTap,
       child: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xfffee600),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(22
-          ),
+          padding: const EdgeInsets.all(22),
           child: Text(
             this.label,
-            style: const TextStyle(
-              fontSize: 20,
-              fontFamily: AppFonts.quicksandBold,
-              color: Colors.black,
-            ),
+            style: Theme.of(context).textTheme.labelMedium,
           ),
         ),
       ),
