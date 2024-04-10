@@ -59,6 +59,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Get started`
+  String get loginBottomButton {
+    return Intl.message(
+      'Get started',
+      name: 'loginBottomButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lupe Trips`
+  String get loginTitle {
+    return Intl.message(
+      'Lupe Trips',
+      name: 'loginTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share easily your experiencies around\nthe world with your travel mates`
+  String get loginSubtitle {
+    return Intl.message(
+      'Share easily your experiencies around\nthe world with your travel mates',
+      name: 'loginSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -67,6 +97,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'es'),
     ];
   }
 
