@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109066027840",
+    "project_id": "lupe-ac734",
+    "storage_bucket": "lupe-ac734.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109066027840:android:5496737901c6f2a37cf0a5",
+        "android_client_info": {
+          "package_name": "com.cristiantabares.lupe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSqn-VyPiVHuGQSiMDNbPf6Ex38lrVZUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

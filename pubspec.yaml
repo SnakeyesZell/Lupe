@@ -41,6 +41,8 @@ dependencies:
   provider: ^6.1.2
   dio: ^5.4.2+1
   flutter_dotenv: ^5.1.0
+  firebase_auth: ^4.19.1
+  firebase_core: ^2.29.0
 
 dev_dependencies:
   flutter_test:
@@ -66,8 +68,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - .env
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+    - assets/images/
+    - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
