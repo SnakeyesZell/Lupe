@@ -12,4 +12,6 @@ export 'enviroment/enviroment.dart';
 export 'assets/app_image.dart';
 export 'assets/app_icons.dart';
 
+// -- THEME
+export 'theme/app_theme.dart';
 

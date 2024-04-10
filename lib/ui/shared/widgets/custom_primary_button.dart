@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lupe/config/assets/app_fonts.dart';
 
 class CustomPrimaryButton extends StatelessWidget 
 {
@@ -29,7 +30,7 @@ class CustomPrimaryButton extends StatelessWidget
             this.label,
             style: const TextStyle(
               fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontFamily: AppFonts.quicksandBold,
               color: Colors.black,
             ),
           ),
