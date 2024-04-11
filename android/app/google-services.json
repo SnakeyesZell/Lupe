@@ -12,7 +12,20 @@
           "package_name": "com.cristiantabares.lupe"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "109066027840-552mbqvhra2ij1ngu41gjgui3r7g321s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cristiantabares.lupe",
+            "certificate_hash": "71ca99605df7f462ee1d07a6bfc388f30dc1330c"
+          }
+        },
+        {
+          "client_id": "109066027840-n8b6bighe5qj90elgmu9n4d4616retj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCSqn-VyPiVHuGQSiMDNbPf6Ex38lrVZUk"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109066027840-n8b6bighe5qj90elgmu9n4d4616retj8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "109066027840-d15sm09nq9mi5j819gj1dfaupu51hvca.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cristiantabares.lupe"
+              }
+            }
+          ]
         }
       }
     }
