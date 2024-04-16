@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDK9O1cuh4brrCWcBFXNZ7CjIp2z2rMnQY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>109066027840</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.cristiantabares.lupe.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>lupe-ac734</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lupe-ac734.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:109066027840:ios:d756db06e6e6d8087cf0a5</string>
+</dict>
+</plist>

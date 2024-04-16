@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:lupe/config/config.dart';
+
+import 'widgets/login_bottom_items.dart';
+import 'widgets/login_image_background.dart';
+import 'widgets/login_gradient_background.dart';
 
 class LoginPage extends StatelessWidget 
 {
@@ -9,16 +11,20 @@ class LoginPage extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: Center(
-        child: TextButton(
-          child: const Text('Navigate to Home'),
-          onPressed: () => context.go(AppRoutePaths.home),
-        ),
-      ),
+    return const Scaffold(
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>
+        [
+          LoginImageBackground(),
+          LoginGradientBackground(),
+          Align(
+            alignment: Alignment(0, 0.9),
+            child: LoginBotrtomItems(),
+          )
+        ],
+      ), 
     );
   }
 }
+
