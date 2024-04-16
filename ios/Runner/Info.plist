@@ -3,6 +3,20 @@
 <plist version="1.0">
 <dict>
 
+
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.109066027840-d15sm09nq9mi5j819gj1dfaupu51hvca</string>
+			</array>
+		</dict>
+	</array>
+
+
 	<key>GIDClientID</key>
 	<string>109066027840-d15sm09nq9mi5j819gj1dfaupu51hvca.apps.googleusercontent.com</string>
 
