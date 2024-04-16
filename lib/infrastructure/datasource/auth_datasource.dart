@@ -14,26 +14,45 @@ class AuthDataSource extends IAuthDataSource
   @override
   Future<LupeUser> signInWithGoogle() async 
   {
-    GoogleSignIn googleSignIn = GoogleSignIn();
-    GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
-    GoogleSignInAuthentication? googleSignInAuthentication = await googleSignInAccount?.authentication;
+    try 
+    {      
+      GoogleSignIn googleSignIn = GoogleSignIn();
+      GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+      GoogleSignInAuthentication? googleSignInAuthentication = await googleSignInAccount?.authentication;
 
-    AuthCredential authCredential = GoogleAuthProvider.credential(
-      idToken: googleSignInAuthentication?.idToken,
-      accessToken: googleSignInAuthentication?.accessToken,
-    );
+      AuthCredential authCredential = GoogleAuthProvider.credential(
+        idToken: googleSignInAuthentication?.idToken,
+        accessToken: googleSignInAuthentication?.accessToken,
+      );
 
-    UserCredential userCredential = await this._auth.signInWithCredential(authCredential);
-    User? userData = userCredential.user;
+      UserCredential userCredential = await this._auth.signInWithCredential(authCredential);
+      User? userData = userCredential.user;
 
-    return AuthMapper.getUserFromGoogle(userData);    
+      return AuthMapper.getUserFromGoogle(userData);    
+    } 
+    on FirebaseAuthException catch(e) 
+    {      
+      throw Exception('Error with Google SignIn: $e');
+    }
+    catch (e) 
+    {
+      throw Exception('Something failed with Google SignIn');
+    }
+
   }
   
   @override
   Future<LupeUser> signInWithApple() 
   {
-    // TODO: implement signInWithApple
-    throw UnimplementedError();
+    try 
+    {      
+      // TODO: implement signInWithApple
+      throw UnimplementedError();
+    } 
+    catch (e) 
+    {
+      throw Exception('Something failed with Apple SignIn');
+    }
   }
 }
 
