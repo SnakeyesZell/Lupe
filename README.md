@@ -1,16 +1,8 @@
-# lupe
+# Lupe
 
-A new Flutter project.
+This is Lupe. This is a new project I have started by miself. My idea is to create an app to share images by creating trips where users will be able to add their friends on private trips to allow all of them share their trip images also.
 
-## Getting Started
+# Technical area
 
-This project is a starting point for a Flutter application.
+Throughout my hole 5 years of experience as a Flutter developer I have improved and developed my skills until the advanced level. Here I will show the way I work, besides the all layers, patterns and flow I consider are necesary to create a scalable and manteinable app
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
