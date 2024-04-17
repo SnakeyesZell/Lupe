@@ -4,5 +4,8 @@
     "loginAppleButton": "Apple Sign In",
     "loginGoogleButton": "Google Sign In",
     "loginTitle": "Lupe Trips",
-    "loginSubtitle": "Share easily your experiencies around\nthe world with your travel mates"
+    "loginSubtitle": "Share easily your experiencies around\nthe world with your travel mates",
+
+    "homeAppbarTitle": "Hi ",
+    "homeTitle": "Another adventure you want to share?"
 }

@@ -25,5 +25,18 @@ class AuthProvider extends ChangeNotifier
       throw Exception(e);
     }
   }
+
+  String getUserName() 
+  {
+    String name = '';
+
+    if(this._state.lupeUser != null) 
+    {
+      List<String> splitedName = this._state.lupeUser!.name.split(' ');      
+      name = splitedName.first;
+    }
+
+    return name;
+  }
 }
 

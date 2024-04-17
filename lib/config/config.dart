@@ -15,4 +15,7 @@ export 'assets/app_fonts.dart';
 
 // -- THEME
 export 'theme/app_theme.dart';
+export 'theme/app_contrains.dart';
+export 'theme/app_text_theme.dart';
+
 

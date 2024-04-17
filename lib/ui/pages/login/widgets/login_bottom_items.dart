@@ -110,10 +110,9 @@ class _ButttonIcon extends StatelessWidget
 
   const _ButttonIcon(
   {
-    Key? key, 
     required this.imagePath, 
     required this.size
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) 

@@ -12,6 +12,11 @@ abstract class AppTextTheme
       fontSize: _FontSizes.titleLarge,
       fontFamily: AppFonts.quicksandBold,
     ),
+    titleMedium: TextStyle(
+      color: Colors.black.withOpacity(0.9),
+      fontSize: _FontSizes.titleMedium,
+      fontFamily: AppFonts.quicksandBold,
+    ),    
 
     // === LABELS ===
     labelLarge: TextStyle(

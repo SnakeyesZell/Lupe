@@ -99,6 +99,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Hi `
+  String get homeAppbarTitle {
+    return Intl.message(
+      'Hi ',
+      name: 'homeAppbarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Another adventure you want to share?`
+  String get homeTitle {
+    return Intl.message(
+      'Another adventure you want to share?',
+      name: 'homeTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

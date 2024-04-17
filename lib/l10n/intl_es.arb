@@ -4,5 +4,8 @@
     "loginAppleButton": "Inicio Apple",
     "loginGoogleButton": "Inicio Google",
     "loginTitle": "Lupe Viajes",
-    "loginSubtitle": "Comparte fácilmente tus experiencias alrededor\ndel mundo con tus compañeros de viaje"
+    "loginSubtitle": "Comparte fácilmente tus experiencias alrededor\ndel mundo con tus compañeros de viaje",
+
+    "homeAppbarTitle": "Hola ",
+    "homeTitle": "Otra aventurra que quieras compartir?"
 }
