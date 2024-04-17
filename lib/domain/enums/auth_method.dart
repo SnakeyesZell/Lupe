@@ -1,0 +1,5 @@
+enum AuthMethod 
+{
+  google,
+  apple,
+}

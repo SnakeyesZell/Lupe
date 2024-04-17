@@ -6,7 +6,7 @@ import 'widgets/login_gradient_background.dart';
 
 class LoginPage extends StatelessWidget 
 {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) 
@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget
           LoginGradientBackground(),
           Align(
             alignment: Alignment(0, 0.9),
-            child: LoginBotrtomItems(),
+            child: LoginBottomItems(),
           )
         ],
       ), 

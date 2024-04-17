@@ -23,7 +23,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "fisrtLabel": MessageLookupByLibrary.simpleMessage("Primer Texto"),
-        "loginBottomButton": MessageLookupByLibrary.simpleMessage("Empecemos"),
+        "loginAppleButton":
+            MessageLookupByLibrary.simpleMessage("Inicio Apple"),
+        "loginGoogleButton":
+            MessageLookupByLibrary.simpleMessage("Inicio Google"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
             "Comparte fácilmente tus experiencias alrededor\ndel mundo con tus compañeros de viaje"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Lupe Viajes")

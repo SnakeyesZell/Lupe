@@ -12,11 +12,11 @@ class AuthProvider extends ChangeNotifier
 
   AuthState get state => this._state;
 
-  Future<void> signIn() async 
+  Future<void> signIn(AuthMethod authMethod) async 
   {
     try 
     {      
-      LupeUser lupeUser = await this.repository.signIn();
+      LupeUser lupeUser = await this.repository.signIn(authMethod);
       this._state = this._state.copyWith(lupeUser: lupeUser);
       notifyListeners();    
     } 

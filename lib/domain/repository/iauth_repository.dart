@@ -4,6 +4,6 @@ import 'package:lupe/domain/domain.dart';
 
 abstract class IAuthRepository 
 {
-  Future<LupeUser> signIn();
+  Future<LupeUser> signIn(AuthMethod authMethod);
   User? getFirebaseUser();
 }

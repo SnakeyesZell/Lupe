@@ -60,11 +60,21 @@ class S {
     );
   }
 
-  /// `Get started`
-  String get loginBottomButton {
+  /// `Apple Sign In`
+  String get loginAppleButton {
     return Intl.message(
-      'Get started',
-      name: 'loginBottomButton',
+      'Apple Sign In',
+      name: 'loginAppleButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Google Sign In`
+  String get loginGoogleButton {
+    return Intl.message(
+      'Google Sign In',
+      name: 'loginGoogleButton',
       desc: '',
       args: [],
     );
