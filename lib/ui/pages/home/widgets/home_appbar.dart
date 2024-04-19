@@ -13,19 +13,24 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget
   @override
   Widget build(BuildContext context) 
   {
+    AuthProvider authProvider = context.watch<AuthProvider>();
+    bool isThereLuperUser = (authProvider.state.lupeUser != null);
+
     return PreferredSize(
       preferredSize: this.preferredSize,
       child: Padding(
         padding: const EdgeInsets.only(top: AppConstrains.viewportMargin),
-        child: AppBar(
-          title: const _NameLabel(),
-          titleSpacing: AppConstrains.viewportMargin,
-          actions: const <Widget>
-          [
-            _UserProfileImage(),
-            SizedBox(width: AppConstrains.viewportMargin)
-          ],
-        ),
+        child: (isThereLuperUser) 
+        ? AppBar(
+            title: const _NameLabel(),
+            titleSpacing: AppConstrains.viewportMargin,
+            actions: const <Widget>
+            [
+              _UserProfileImage(),
+              SizedBox(width: AppConstrains.viewportMargin)
+            ],
+          )
+        : const SizedBox.shrink(),
       ),
     );
   }

@@ -16,13 +16,20 @@ void main() async
 
   await dotenv.load(fileName: AppEnviroment.fileName);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  String initialLocation = await AppRouter.getInitialLocation();
 
-  runApp(const MyApp());
+  runApp(MyApp(initialLocation: initialLocation));
 }
 
 class MyApp extends StatefulWidget 
 {
-  const MyApp({super.key});
+  final String initialLocation;
+
+  const MyApp(
+  {
+    super.key, 
+    required this.initialLocation,
+  });
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -36,7 +43,7 @@ class _MyAppState extends State<MyApp>
   @override
   void initState() 
   {
-    this.router = AppRouter.router;
+    this.router = AppRouter.router(this.widget.initialLocation);
     this.providers = AppProviders.providers;
 
     super.initState();
@@ -46,7 +53,7 @@ class _MyAppState extends State<MyApp>
   Widget build(BuildContext context) 
   {
     return MultiProvider(
-      providers: AppProviders.providers,
+      providers: this.providers,
       child: MaterialApp.router(
         theme: AppTheme.lightTheme,
         routerConfig: this.router,

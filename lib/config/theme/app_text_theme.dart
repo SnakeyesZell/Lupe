@@ -16,7 +16,12 @@ abstract class AppTextTheme
       color: Colors.black.withOpacity(0.9),
       fontSize: _FontSizes.titleMedium,
       fontFamily: AppFonts.quicksandBold,
-    ),    
+    ),
+    titleSmall: TextStyle(
+      color: Colors.black.withOpacity(0.9),
+      fontSize: _FontSizes.titleSmall,
+      fontFamily: AppFonts.quicksandBold,
+    ),
 
     // === LABELS ===
     labelLarge: TextStyle(
@@ -44,6 +49,11 @@ abstract class AppTextTheme
     bodyMedium: TextStyle(
       color: Colors.black.withOpacity(0.9),
       fontSize: _FontSizes.bodyMedium,
+      fontFamily: AppFonts.quicksandRegular,
+    ),
+    bodySmall: TextStyle(
+      color: Colors.black.withOpacity(0.9),
+      fontSize: _FontSizes.bodySmall,
       fontFamily: AppFonts.quicksandRegular,
     ),
   );

@@ -9,9 +9,9 @@ abstract class AppRouter
   static final GlobalKey<NavigatorState> _rootNavigationKey = GlobalKey<NavigatorState>();
   static final GlobalKey<NavigatorState> _rootNavigationHome = GlobalKey<NavigatorState>(debugLabel: 'shellHome');
   
-  static GoRouter router = GoRouter(
+  static GoRouter router(String initialLocation) => GoRouter(
     navigatorKey: _rootNavigationKey,
-    initialLocation: AppRoutePaths.login,
+    initialLocation: initialLocation,
     routes: <RouteBase> 
     [
       GoRoute(
@@ -49,6 +49,15 @@ abstract class AppRouter
         },
       ),
     ]
-  ); 
+  );
+
+  static Future<String> getInitialLocation() async
+  {
+    String lupeUserJson = await AuthSecureStorage.readData(AuthSecureStorage.lupeUser);
+
+    return (lupeUserJson.isEmpty) 
+    ? AppRoutePaths.login
+    : AppRoutePaths.home;
+  } 
 }
 

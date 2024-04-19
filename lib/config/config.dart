@@ -18,4 +18,7 @@ export 'theme/app_theme.dart';
 export 'theme/app_contrains.dart';
 export 'theme/app_text_theme.dart';
 
+// -- SECURE STORAGE
+export 'secure_storage/auth_secure_storage.dart';
+
 
