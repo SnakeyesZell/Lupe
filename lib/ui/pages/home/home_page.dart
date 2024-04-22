@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:lupe/config/config.dart';
 import 'package:lupe/generated/l10n.dart';
 
 import 'widgets/home_appbar.dart';
+import 'widgets/home_search_input.dart';
 
 class HomePage extends StatelessWidget 
 {
@@ -37,9 +37,11 @@ class _Body extends StatelessWidget
           [
             const SizedBox(height: 10),
             Text(
-              S.of(context).homeTitle,
+              S.current.homeTitle,
               style: Theme.of(context).textTheme.titleMedium,
             ),
+            const SizedBox(height: 20),
+            const HomeSearchInput(),
           ],
         ),
       ),

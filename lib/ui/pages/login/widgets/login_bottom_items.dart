@@ -21,14 +21,14 @@ class LoginBottomItems extends StatelessWidget
       children: <Widget>
       [
         Text(
-          S.of(context).loginTitle,
+          S.current.loginTitle,
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
             color: Colors.white,
           ),
         ),
         const SizedBox(height: 20),
         Text(
-          S.of(context).loginSubtitle,
+          S.current.loginSubtitle,
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             color: Colors.white,
           ),
@@ -58,7 +58,7 @@ class _Buttons extends StatelessWidget
       [
         CustomPrimaryButton(
           withd: withd,
-          label: S.of(context).loginGoogleButton, 
+          label: S.current.loginGoogleButton, 
           onTap: ()=> this.onTapGetStartedButton(
             context: context, 
             authProvider: authProvider,
@@ -75,7 +75,7 @@ class _Buttons extends StatelessWidget
         (Platform.isIOS) 
         ? CustomPrimaryButton(
             withd: withd,
-            label: S.of(context).loginAppleButton, 
+            label: S.current.loginAppleButton, 
             onTap: ()=> this.onTapGetStartedButton(
               context: context, 
               authProvider: authProvider,

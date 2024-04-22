@@ -119,6 +119,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Looking for travel mates?`
+  String get homeSearchInputHing {
+    return Intl.message(
+      'Looking for travel mates?',
+      name: 'homeSearchInputHing',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -56,7 +56,7 @@ class _NameLabel extends StatelessWidget
             children: <InlineSpan> 
             [
               TextSpan(
-                text: S.of(context).homeAppbarTitle,
+                text: S.current.homeAppbarTitle,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontFamily: AppFonts.quicksandRegular,
                 ),
