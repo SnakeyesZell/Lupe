@@ -14,17 +14,17 @@ class LupeUser
   });
 
   factory LupeUser.fromJson(Map<String, dynamic> json) => LupeUser(
+    id       : json["id"],
     email    : json["email"],
     name     : json["name"],
     imageUrl : json["imageUrl"],
-    id       : json["id"],
   );
 
   Map<String, dynamic> toJson() => 
   {
+    "id"       : id,
     "email"    : email,
     "name"     : name,
     "imageUrl" : imageUrl,
-    "id"       : id,
   };
 }

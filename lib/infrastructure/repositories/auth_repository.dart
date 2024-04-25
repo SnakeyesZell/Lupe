@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:lupe/domain/domain.dart';
@@ -18,6 +17,5 @@ class AuthRepository extends IAuthRepository
     return (authMethod == AuthMethod.google) 
     ? this.dataSource.signInWithGoogle()
     : this.dataSource.signInWithApple();
-  }
-  
+  }  
 }
