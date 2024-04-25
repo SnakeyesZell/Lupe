@@ -43,7 +43,7 @@ class _ImageCard extends StatelessWidget
   {
     Size size = MediaQuery.of(context).size;
     double imageWith = ((size.width / 2) - AppConstrains.viewportMargin - 5);
-    double imageHeight = (size.height * 0.30);    
+    double imageHeight = (size.height * 0.30);
         
     return ClipRRect(
       borderRadius: BorderRadius.circular(AppConstrains.imageRadius),

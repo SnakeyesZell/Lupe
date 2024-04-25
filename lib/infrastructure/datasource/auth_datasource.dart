@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:lupe/domain/domain.dart';
 import 'package:lupe/infrastructure/infrastructure.dart';
 
-class AuthDataSource extends IAuthDataSource
+class AuthDataSource implements IAuthDataSource
 {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -28,7 +29,10 @@ class AuthDataSource extends IAuthDataSource
       UserCredential userCredential = await this._auth.signInWithCredential(authCredential);
       User? userData = userCredential.user;
 
-      return AuthMapper.getUserFromGoogle(userData);    
+      LupeUser lupeUser = AuthMapper.getUserFromGoogle(userData);
+      this._createFirebaseLuperUser(lupeUser.toJson());
+
+      return lupeUser;
     } 
     on FirebaseAuthException catch(e) 
     {      
@@ -52,6 +56,27 @@ class AuthDataSource extends IAuthDataSource
     catch (e) 
     {
       throw Exception('Something failed with Apple SignIn');
+    }
+  }
+
+  Future<void> _createFirebaseLuperUser(Map<String, dynamic> data) async 
+  {
+    CollectionReference lupeUsersReference = FirebaseFirestore.instance.collection("lupeUsers");
+
+    try 
+    {
+      await FirebaseFirestore.instance.runTransaction((Transaction transaction) async 
+      {
+        Query query = lupeUsersReference.where('email', isEqualTo: data['email']);
+
+        (query.parameters.isEmpty) 
+        ? await FirebaseFirestore.instance.collection("lupeUsers").doc().set(data)
+        : null;        
+      });
+    } 
+    catch (e) 
+    {
+      throw Exception('Error creating user on Firestore');
     }
   }
 }
