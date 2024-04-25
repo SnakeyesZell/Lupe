@@ -1,6 +1,7 @@
 // -- ENTIOTIES
 export 'entities/lupe_user.dart';
 export 'entities/trip.dart';
+export 'entities/isolates_arguments.dart';
 
 // -- DATASOURCES
 export 'datasource/iauth_datasource.dart';

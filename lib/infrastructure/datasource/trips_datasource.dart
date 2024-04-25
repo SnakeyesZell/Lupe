@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:lupe/domain/domain.dart';
 import 'package:lupe/infrastructure/infrastructure.dart';
+import 'package:lupe/infrastructure/mappers/trips_mapper.dart';
 
 class TripsDataSource implements ITripsDataSource 
 {
@@ -24,7 +25,6 @@ class TripsDataSource implements ITripsDataSource
   @override
   Future<List<Trip>> getTrips(String lupeUserId) async
   {  
-    List<Trip> trips = [];
     List<TripDto> tripsDto = [];
     List<LupeUser> lupeUsers = await this._geLupetUsers();
 
@@ -36,14 +36,15 @@ class TripsDataSource implements ITripsDataSource
       
       for (QueryDocumentSnapshot trip in query.docs) 
       { 
-        tripsDto.add(TripDto.fromJson(trip.data() as Map<String, dynamic>));
+        Map<String, dynamic> data = (trip.data() as Map<String, dynamic>);
+        tripsDto.add(TripDto.fromJson(data));
       }
 
-      return trips;
+      return await TripsMapper.getTrips(tripsDto: tripsDto, lupeUsers: lupeUsers);
     } 
     catch (e) 
     {
-      throw Exception();
+      throw Exception('Error requesting trips: $e');
     }
   }
 
@@ -65,14 +66,15 @@ class TripsDataSource implements ITripsDataSource
       
       for (QueryDocumentSnapshot user in query.docs) 
       { 
-        lupeUsers.add(LupeUser.fromJson(user.data() as Map<String, dynamic>));
+        Map<String, dynamic> data = (user.data() as Map<String, dynamic>);
+        lupeUsers.add(LupeUser.fromJson(data));
       }
 
       return lupeUsers;
     } 
     catch (e) 
     {
-      throw Exception();
+      throw Exception('Error requesting users');
     }
 
   }

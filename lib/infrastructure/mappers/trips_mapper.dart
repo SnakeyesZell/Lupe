@@ -5,39 +5,43 @@ import 'package:lupe/infrastructure/infrastructure.dart';
 
 abstract class TripsMapper 
 {
-  Future<List<Trip>> getTrips(
+  static Future<List<Trip>> getTrips(
   {
     required List<TripDto> tripsDto, 
     required List<LupeUser> lupeUsers,
   }) async
   {
     List<Trip> trips = [];
-
     ReceivePort receivePort = ReceivePort();
-    Isolate isolate = await Isolate.spawn(
-      this._buildIsolateTrips, 
-      [
-        receivePort.sendPort, 
-        tripsDto, 
-        lupeUsers,
-      ]
-    );
-    
-    receivePort.listen((message) 
-    { 
-      trips = message;
-    });
 
-    isolate.kill();
-
-    return trips;
+    try 
+    {
+      await Isolate.spawn(
+        _buildIsolateTrips, 
+        IsolatesArguments(
+          sendPort: receivePort.sendPort,
+          arguments: <dynamic>
+          [
+            tripsDto, 
+            lupeUsers,
+          ]
+        ),
+      );
+      
+      receivePort.listen((message)=> trips = message);
+      return trips;      
+    } 
+    catch (e) 
+    {
+      throw Exception('Error when mapping users: $e');
+    }
   }
 
-  void _buildIsolateTrips(List<dynamic> arguments) 
-  {    
-    SendPort sendPort = arguments[0];
-    List<TripDto> tripsDto = arguments[1]; 
-    List<LupeUser> lupeUsers = arguments[1];
+  static void _buildIsolateTrips(IsolatesArguments arguments) 
+  { 
+    SendPort sendPort = arguments.sendPort;
+    List<TripDto> tripsDto = arguments.arguments[0]; 
+    List<LupeUser> lupeUsers = arguments.arguments[1];
     List<Trip> trips = [];
 
     for (TripDto tripDto in tripsDto) 
@@ -47,7 +51,7 @@ abstract class TripsMapper
         title: tripDto.title, 
         description: tripDto.description, 
         date: tripDto.date, 
-        linkedUsers: this._getLinkedUsers(tripDto, lupeUsers), 
+        linkedUsers: _getLinkedUsers(tripDto, lupeUsers), 
         images: tripDto.images,
       );
 
@@ -57,7 +61,7 @@ abstract class TripsMapper
     sendPort.send(trips);
   }
 
-  List<LupeUser> _getLinkedUsers(TripDto tripDto, List<LupeUser> lupeUsers) 
+  static List<LupeUser> _getLinkedUsers(TripDto tripDto, List<LupeUser> lupeUsers) 
   {
     List<LupeUser> linkendUsers = [];
 
@@ -75,4 +79,3 @@ abstract class TripsMapper
     return linkendUsers;
   }
 }
-
