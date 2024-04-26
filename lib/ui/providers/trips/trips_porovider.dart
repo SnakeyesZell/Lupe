@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:lupe/domain/domain.dart';
 
+part 'trips_state.dart';
+
 class TripsProvider extends ChangeNotifier 
 {
-  final ITripsRepository repository;
+  late ITripsRepository repository;
+  late TripsState _state;
 
-  TripsProvider(this.repository);
+  TripsProvider(this.repository) : this._state = TripsState();
 
-  Future<void> getTrips() async 
+  TripsState get state => this._state;
+
+  Future<void> getTrips(String lupeUserId) async 
   {
-    await this.repository.getTrips('a50ikKDqPqVZGPNogt9WKqZAWTh2');
+    List<Trip> trips = await this.repository.getTrips(lupeUserId);
+
+    this._state = this.state.copyWith(
+      trips: trips,
+      areTripsLoaded: true,
+    );
+
+    notifyListeners();
   }
 }
 

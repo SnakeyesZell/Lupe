@@ -1,6 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:lupe/config/config.dart';
+
+import 'package:lupe/ui/providers/providers.dart';
 
 class HomeGalery extends StatelessWidget 
 {
@@ -9,25 +12,63 @@ class HomeGalery extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return const SizedBox(
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>
-        [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>
-            [
-              _ImageCard(imagePath: 'assets/images/image3.jpg',),
-              _ImageCard(imagePath: 'assets/images/image2.jpg',),
-            ],
-          ),
-        ],
-      ),
-    );
+    AuthProvider authProvider = context.watch<AuthProvider>();
+    TripsProvider tripsProvider = context.watch<TripsProvider>();
+    bool isLupeUserNotNull = authProvider.state.lupeUser != null;
+
+    return (isLupeUserNotNull) 
+    ? const _Galery()
+    : const CircularProgressIndicator();
   }
 }
+
+class _Galery extends StatefulWidget 
+{
+  const _Galery({Key? key}) : super(key: key);
+
+  @override
+  State<_Galery> createState() => _GaleryState();
+}
+
+class _GaleryState extends State<_Galery> 
+{
+  @override
+  void initState() 
+  {
+    this.getTrips();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) 
+  {
+    double spacing = 5;
+    TripsProvider tripsProvider = context.watch<TripsProvider>();
+
+    return (tripsProvider.state.trips.isNotEmpty) 
+    ? GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        // itemCount: tripsProvider.state.trips.length,
+        itemCount: 5,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.7,
+          mainAxisSpacing: spacing,
+          crossAxisSpacing: spacing,
+        ), 
+        itemBuilder: (context, index)=> _ImageCard(imagePath: 'assets/images/login_background.jpg'),
+      ) 
+    : const Text('There are no trips');
+  }
+
+  Future<void> getTrips() async
+  {    
+    String lupeUserId = context.read<AuthProvider>().state.lupeUser!.id;
+    await context.read<TripsProvider>().getTrips(lupeUserId);    
+  }
+}
+
 
 class _ImageCard extends StatelessWidget 
 { 
@@ -40,37 +81,29 @@ class _ImageCard extends StatelessWidget
 
   @override
   Widget build(BuildContext context) 
-  {
-    Size size = MediaQuery.of(context).size;
-    double imageWith = ((size.width / 2) - AppConstrains.viewportMargin - 5);
-    double imageHeight = (size.height * 0.30);
-        
+  {        
     return ClipRRect(
       borderRadius: BorderRadius.circular(AppConstrains.imageRadius),
-      child: SizedBox(
-        width: imageWith,
-        height: imageHeight,  
-        child: Stack(
-          children: <Widget>
-          [
-            Positioned.fill(
-              child: Image(
-                fit: BoxFit.cover,
-                image: AssetImage(this.imagePath)
-              ),
+      child: Stack(
+        children: <Widget>
+        [
+          Positioned.fill(
+            child: Image(
+              fit: BoxFit.cover,
+              image: AssetImage(this.imagePath)
             ),
+          ),
+            
+          const Align(
+            alignment: Alignment.topCenter,
+            child: _TopLabel(),
+          ),
       
-            const Align(
-              alignment: Alignment.topCenter,
-              child: _TopLabel(),
-            ),
-        
-            const Align(
-              alignment: Alignment.bottomCenter,
-              child: _CardImageLabel(),
-            )
-          ],
-        ),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: _CardImageLabel(),
+          )
+        ],
       ),
     );
   }

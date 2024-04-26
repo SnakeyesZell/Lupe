@@ -6,7 +6,12 @@ import 'package:lupe/infrastructure/mappers/trips_mapper.dart';
 
 class TripsDataSource implements ITripsDataSource 
 {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  TripsDataSource() 
+  {
+    this._firestore.settings = const Settings(persistenceEnabled: true);
+  }
 
   @override
   Future<Trip> createTrip() 
@@ -39,7 +44,7 @@ class TripsDataSource implements ITripsDataSource
         Map<String, dynamic> data = (trip.data() as Map<String, dynamic>);
         tripsDto.add(TripDto.fromJson(data));
       }
-
+  
       return await TripsMapper.getTrips(tripsDto: tripsDto, lupeUsers: lupeUsers);
     } 
     catch (e) 

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:lupe/config/config.dart';
 import 'package:lupe/generated/l10n.dart';
 
 import 'widgets/home_appbar.dart';
 import 'widgets/home_galery.dart';
 import 'widgets/home_search_input.dart';
-import 'package:lupe/ui/providers/providers.dart';
 
 class HomePage extends StatelessWidget 
 {
@@ -22,28 +20,9 @@ class HomePage extends StatelessWidget
   }
 }
 
-class _Body extends StatefulWidget 
+class _Body extends StatelessWidget 
 {
-  const _Body({
-    super.key,
-  });
-
-  @override
-  State<_Body> createState() => _BodyState();
-}
-
-class _BodyState extends State<_Body> 
-{
-  @override
-  void initState() 
-  {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async
-    { 
-      await context.read<TripsProvider>().getTrips();
-    });
-
-    super.initState();
-  }
+  const _Body();
 
   @override
   Widget build(BuildContext context) 
@@ -64,6 +43,7 @@ class _BodyState extends State<_Body>
             const HomeSearchInput(),
             const SizedBox(height: 20),
             const HomeGalery(),
+            const SizedBox(height: kTextTabBarHeight),
           ],
         ),
       ),

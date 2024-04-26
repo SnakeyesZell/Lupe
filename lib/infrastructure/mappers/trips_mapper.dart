@@ -11,15 +11,14 @@ abstract class TripsMapper
     required List<LupeUser> lupeUsers,
   }) async
   {
-    List<Trip> trips = [];
-    ReceivePort receivePort = ReceivePort();
+    ReceivePort receibePort = ReceivePort();
 
     try 
     {
       await Isolate.spawn(
         _buildIsolateTrips, 
         IsolatesArguments(
-          sendPort: receivePort.sendPort,
+          sendPort: receibePort.sendPort,
           arguments: <dynamic>
           [
             tripsDto, 
@@ -28,8 +27,12 @@ abstract class TripsMapper
         ),
       );
       
-      receivePort.listen((message)=> trips = message);
-      return trips;      
+      await for (final cosa in receibePort)
+      {
+        return cosa;
+      }
+      
+      return [];
     } 
     catch (e) 
     {

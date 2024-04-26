@@ -24,6 +24,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget
         ? AppBar(
             title: const _NameLabel(),
             titleSpacing: AppConstrains.viewportMargin,
+            surfaceTintColor: Theme.of(context).scaffoldBackgroundColor,
             actions: const <Widget>
             [
               _UserProfileImage(),
