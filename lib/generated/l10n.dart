@@ -60,11 +60,21 @@ class S {
     );
   }
 
-  /// `Get started`
-  String get loginBottomButton {
+  /// `Apple Sign In`
+  String get loginAppleButton {
     return Intl.message(
-      'Get started',
-      name: 'loginBottomButton',
+      'Apple Sign In',
+      name: 'loginAppleButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Google Sign In`
+  String get loginGoogleButton {
+    return Intl.message(
+      'Google Sign In',
+      name: 'loginGoogleButton',
       desc: '',
       args: [],
     );
@@ -85,6 +95,36 @@ class S {
     return Intl.message(
       'Share easily your experiencies around\nthe world with your travel mates',
       name: 'loginSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi `
+  String get homeAppbarTitle {
+    return Intl.message(
+      'Hi ',
+      name: 'homeAppbarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Another adventure you want to share?`
+  String get homeTitle {
+    return Intl.message(
+      'Another adventure you want to share?',
+      name: 'homeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looking for travel mates?`
+  String get homeSearchInputHing {
+    return Intl.message(
+      'Looking for travel mates?',
+      name: 'homeSearchInputHing',
       desc: '',
       args: [],
     );

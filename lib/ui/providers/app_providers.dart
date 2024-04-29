@@ -10,6 +10,7 @@ abstract class AppProviders
   static List<SingleChildWidget> providers = <SingleChildWidget>
   [
     ChangeNotifierProvider(create: (BuildContext context)=> AuthProvider(AuthRepository(AuthDataSource()))),
+    ChangeNotifierProvider(create: (BuildContext context)=> TripsProvider(TripsRepository(TripsDataSource()))),
   ];
 }
 

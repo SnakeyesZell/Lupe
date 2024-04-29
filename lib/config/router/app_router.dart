@@ -8,10 +8,11 @@ abstract class AppRouter
 {
   static final GlobalKey<NavigatorState> _rootNavigationKey = GlobalKey<NavigatorState>();
   static final GlobalKey<NavigatorState> _rootNavigationHome = GlobalKey<NavigatorState>(debugLabel: 'shellHome');
+  static final GlobalKey<NavigatorState> _rootNavigationProfile = GlobalKey<NavigatorState>(debugLabel: 'shellProfile');
   
-  static GoRouter router = GoRouter(
+  static GoRouter router(String initialLocation) => GoRouter(
     navigatorKey: _rootNavigationKey,
-    initialLocation: AppRoutePaths.login,
+    initialLocation: initialLocation,
     routes: <RouteBase> 
     [
       GoRoute(
@@ -19,6 +20,7 @@ abstract class AppRouter
         name: AppRouteNames.login,
         builder: (BuildContext context, GoRouterState state) => LoginPage(key: state.pageKey),
       ),
+      
       StatefulShellRoute.indexedStack(        
         branches: <StatefulShellBranch> 
         [
@@ -42,6 +44,26 @@ abstract class AppRouter
             ],
           ),
 
+          StatefulShellBranch(
+            navigatorKey: _rootNavigationProfile,
+            routes: <RouteBase>
+            [
+              GoRoute(
+                path: AppRoutePaths.profile,
+                name: AppRouteNames.profile,
+                builder: (BuildContext context, GoRouterState state) => ProfilePage(key: state.pageKey),
+                // routes: <RouteBase>
+                // [
+                //   GoRoute(
+                //     path: 'subpage1',
+                //     name: 'SubPage1',
+                //     builder: (BuildContext context, GoRouterState state) => SubPage1(key: state.pageKey),
+                //   ),
+                // ],
+              ),
+            ],
+          ),          
+
         ], 
         builder: (BuildContext context, GoRouterState state, StatefulNavigationShell navigationShell) 
         {
@@ -49,6 +71,15 @@ abstract class AppRouter
         },
       ),
     ]
-  ); 
+  );
+
+  static Future<String> getInitialLocation() async
+  {
+    String lupeUserJson = await AuthSecureStorage.readData(AuthSecureStorage.lupeUser);
+
+    return (lupeUserJson.isEmpty) 
+    ? AppRoutePaths.login
+    : AppRoutePaths.home;
+  } 
 }
 

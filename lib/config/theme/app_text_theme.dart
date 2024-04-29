@@ -9,42 +9,57 @@ abstract class AppTextTheme
     // === TITLES ===
     titleLarge: TextStyle(
       color: Colors.black.withOpacity(0.9),
-      fontSize: _FontSizes.titleLarge,
+      fontSize: AppFontSizes.titleLarge,
+      fontFamily: AppFonts.quicksandBold,
+    ),
+    titleMedium: TextStyle(
+      color: Colors.black.withOpacity(0.9),
+      fontSize: AppFontSizes.titleMedium,
+      fontFamily: AppFonts.quicksandBold,
+    ),
+    titleSmall: TextStyle(
+      color: Colors.black.withOpacity(0.9),
+      fontSize: AppFontSizes.titleSmall,
       fontFamily: AppFonts.quicksandBold,
     ),
 
     // === LABELS ===
     labelLarge: TextStyle(
       color: Colors.black.withOpacity(0.9),
-      fontSize: _FontSizes.labelLarge,
+      fontSize: AppFontSizes.labelLarge,
       fontFamily: AppFonts.quicksandSemiBold,
     ),
     labelMedium: TextStyle(
       color: Colors.black.withOpacity(0.9),
-      fontSize: _FontSizes.labelMedium,
+      fontSize: AppFontSizes.labelMedium,
       fontFamily: AppFonts.quicksandSemiBold,
     ),
     labelSmall: TextStyle(
       color: Colors.black.withOpacity(0.9),
-      fontSize: _FontSizes.labelSmall,
+      fontSize: AppFontSizes.labelSmall,
       fontFamily: AppFonts.quicksandSemiBold,
     ),
 
     // === BODY ===
     bodyLarge: TextStyle(
       color: Colors.black.withOpacity(0.9),
-      fontSize: _FontSizes.bodyLarge,
+      fontSize: AppFontSizes.bodyLarge,
       fontFamily: AppFonts.quicksandRegular,
     ),
     bodyMedium: TextStyle(
       color: Colors.black.withOpacity(0.9),
-      fontSize: _FontSizes.bodyMedium,
+      fontSize: AppFontSizes.bodyMedium,
+      fontFamily: AppFonts.quicksandRegular,
+    ),
+    bodySmall: TextStyle(
+      color: Colors.black.withOpacity(0.9),
+      fontSize: AppFontSizes.bodySmall,
       fontFamily: AppFonts.quicksandRegular,
     ),
   );
 }
 
-abstract class _FontSizes 
+abstract class AppFontSizes 
 {
   // === TITLES ===
   static const double titleLarge  = 36;

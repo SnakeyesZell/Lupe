@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:lupe/domain/domain.dart';
@@ -13,10 +12,10 @@ class AuthRepository extends IAuthRepository
   User? getFirebaseUser()=> this.dataSource.getCurrenFirebasetUser();
 
   @override
-  Future<LupeUser> signIn() async
+  Future<LupeUser> signIn(AuthMethod authMethod) async
   {
-    if(Platform.isAndroid) return this.dataSource.signInWithGoogle();
-    else return this.dataSource.signInWithApple();
-  }
-  
+    return (authMethod == AuthMethod.google) 
+    ? this.dataSource.signInWithGoogle()
+    : this.dataSource.signInWithApple();
+  }  
 }

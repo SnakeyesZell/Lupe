@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'widgets/mainrwapper_navbar.dart';
+
 class MainWraper extends StatefulWidget 
 {
   final StatefulNavigationShell navigationShell;
   
   const MainWraper(
   {
-    Key? key, 
+    super.key, 
     required this.navigationShell,
-  }) : super(key: key);
+  });
 
   @override
   State<MainWraper> createState() => _MainWraperState();
@@ -28,6 +30,8 @@ class _MainWraperState extends State<MainWraper>
 
   void goToBranch(int index) 
   {
+    setState(()=> this.selectedIndex = index);
+
     this.widget.navigationShell.goBranch(
       index,
       initialLocation: (index == this.widget.navigationShell.currentIndex),
@@ -41,7 +45,20 @@ class _MainWraperState extends State<MainWraper>
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: this.widget.navigationShell,
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>
+          [
+            Positioned.fill(child: this.widget.navigationShell),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: MainRwapperNavbar(
+                selectedIndex: this.selectedIndex,
+                onTapItem: (int index)=> this.goToBranch(index),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
