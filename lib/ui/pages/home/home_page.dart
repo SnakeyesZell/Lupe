@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lupe/config/config.dart';
-import 'package:lupe/generated/l10n.dart';
 
 import 'widgets/home_appbar.dart';
 import 'widgets/home_galery.dart';
-import 'widgets/home_search_input.dart';
 
 class HomePage extends StatelessWidget 
 {
@@ -13,8 +11,7 @@ class HomePage extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return const Scaffold(
-      appBar: HomeAppBar(),
+    return const Scaffold(      
       body: _Body(),
     );
   }
@@ -27,25 +24,19 @@ class _Body extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
+    double bottomSpacing = (kToolbarHeight * 1.5);
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: AppConstrains.viewportMargin),
-      child: SingleChildScrollView(
+      child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: <Widget>
-          [
-            const SizedBox(height: 10),
-            Text(
-              S.current.homeTitle,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 20),
-            const HomeSearchInput(),
-            const SizedBox(height: 20),
-            const HomeGalery(),
-            const SizedBox(height: kTextTabBarHeight),
-          ],
-        ),
+        slivers: <Widget>
+        [
+          const HomeAppBar(),
+          const SliverToBoxAdapter(child: SizedBox(height: AppConstrains.spacingScroll)),
+          const HomeGalery(),
+          SliverToBoxAdapter(child: SizedBox(height: bottomSpacing)),
+        ],
       ),
     );
   }

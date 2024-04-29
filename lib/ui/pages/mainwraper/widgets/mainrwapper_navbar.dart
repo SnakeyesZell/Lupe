@@ -19,6 +19,7 @@ class MainRwapperNavbar extends StatelessWidget
     bool isHomePage = (this.selectedIndex == 0);
     bool isUserPage = (this.selectedIndex == 1);
     double navbarHeight = 64;
+    double horizontalMargin = (AppConstrains.viewportMargin + 20);
 
     return Container(
       decoration: BoxDecoration(
@@ -26,13 +27,12 @@ class MainRwapperNavbar extends StatelessWidget
         borderRadius: const BorderRadius.all(Radius.circular(AppConstrains.navbarRadius))
       ),
       height: navbarHeight,
-      margin: const EdgeInsets.symmetric(
-        horizontal: AppConstrains.viewportMargin,
+      margin: EdgeInsets.symmetric(
+        horizontal: horizontalMargin,
         vertical: 5,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.min,        
         children: <Widget> 
         [
           _NavbarSimpleButtos(

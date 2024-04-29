@@ -6,7 +6,9 @@ import 'package:lupe/config/config.dart';
 import 'package:lupe/generated/l10n.dart';
 import 'package:lupe/ui/providers/providers.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget
+import 'home_search_input.dart';
+
+class HomeAppBar extends StatelessWidget
 {
   const HomeAppBar({super.key});
 
@@ -16,28 +18,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget
     AuthProvider authProvider = context.watch<AuthProvider>();
     bool isThereLuperUser = (authProvider.state.lupeUser != null);
 
-    return PreferredSize(
-      preferredSize: this.preferredSize,
-      child: Padding(
-        padding: const EdgeInsets.only(top: AppConstrains.viewportMargin),
-        child: (isThereLuperUser) 
-        ? AppBar(
-            title: const _NameLabel(),
-            titleSpacing: AppConstrains.viewportMargin,
-            surfaceTintColor: Theme.of(context).scaffoldBackgroundColor,
-            actions: const <Widget>
-            [
-              _UserProfileImage(),
-              SizedBox(width: AppConstrains.viewportMargin)
-            ],
-          )
-        : const SizedBox.shrink(),
-      ),
-    );
+    return (isThereLuperUser) 
+    ? SliverAppBar(
+        title: const _NameLabel(),
+        titleSpacing: 0,
+        actions: const <Widget> [ _UserProfileImage() ],
+        bottom: _AppBarBottom(),
+      )
+    : const SliverToBoxAdapter(child: SizedBox.shrink());
   }
-  
-  @override
-  Size get preferredSize => const Size(double.infinity, 80);
 }
 
 class _NameLabel extends StatelessWidget 
@@ -110,3 +99,28 @@ class _UserProfileImage extends StatelessWidget
   }
 }
 
+class _AppBarBottom extends StatelessWidget implements PreferredSizeWidget
+{
+  @override
+  Widget build(BuildContext context) 
+  {
+    return PreferredSize(
+      preferredSize: preferredSize, 
+      child: Column(
+        children: <Widget>
+        [
+          const SizedBox(height: 10),
+          Text(
+            S.current.homeTitle,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 20),
+          const HomeSearchInput(),              
+        ],
+      ),
+    );
+  }
+  
+  @override
+  Size get preferredSize => const Size(double.infinity, 170);  
+}

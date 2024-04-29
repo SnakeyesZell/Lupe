@@ -45,11 +45,20 @@ class _MainWraperState extends State<MainWraper>
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: this.widget.navigationShell,
-      ),
-      bottomNavigationBar: MainRwapperNavbar(
-        selectedIndex: this.selectedIndex,
-        onTapItem: (int index)=> this.goToBranch(index),
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>
+          [
+            Positioned.fill(child: this.widget.navigationShell),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: MainRwapperNavbar(
+                selectedIndex: this.selectedIndex,
+                onTapItem: (int index)=> this.goToBranch(index),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

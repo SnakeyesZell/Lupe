@@ -1,6 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:lupe/ui/shared/shared.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
+import 'package:lupe/domain/domain.dart';
 import 'package:lupe/config/config.dart';
 
 import 'package:lupe/ui/providers/providers.dart';
@@ -13,18 +17,17 @@ class HomeGalery extends StatelessWidget
   Widget build(BuildContext context) 
   {
     AuthProvider authProvider = context.watch<AuthProvider>();
-    TripsProvider tripsProvider = context.watch<TripsProvider>();
     bool isLupeUserNotNull = authProvider.state.lupeUser != null;
 
     return (isLupeUserNotNull) 
     ? const _Galery()
-    : const CircularProgressIndicator();
+    : const SliverToBoxAdapter(child: CircularProgressIndicator());
   }
 }
 
 class _Galery extends StatefulWidget 
 {
-  const _Galery({Key? key}) : super(key: key);
+  const _Galery();
 
   @override
   State<_Galery> createState() => _GaleryState();
@@ -46,20 +49,22 @@ class _GaleryState extends State<_Galery>
     TripsProvider tripsProvider = context.watch<TripsProvider>();
 
     return (tripsProvider.state.trips.isNotEmpty) 
-    ? GridView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        // itemCount: tripsProvider.state.trips.length,
-        itemCount: 5,
+    ? SliverGrid.builder(
+        itemCount: 10,     
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.7,
           mainAxisSpacing: spacing,
-          crossAxisSpacing: spacing,
+          crossAxisSpacing: spacing,          
         ), 
-        itemBuilder: (context, index)=> _ImageCard(imagePath: 'assets/images/login_background.jpg'),
-      ) 
-    : const Text('There are no trips');
+        itemBuilder: (BuildContext context, int index)
+        {
+          return _ImageCard(trip: tripsProvider.state.trips[0]);
+        },
+      )
+    : const SliverToBoxAdapter(child: Text('There are no trips'));
+
+    //TODO: Create an empty Widget 
   }
 
   Future<void> getTrips() async
@@ -72,11 +77,11 @@ class _GaleryState extends State<_Galery>
 
 class _ImageCard extends StatelessWidget 
 { 
-  final String imagePath;
+  final Trip trip;
 
   const _ImageCard(
   {
-    required this.imagePath,
+    required this.trip,
   });
 
   @override
@@ -88,9 +93,11 @@ class _ImageCard extends StatelessWidget
         children: <Widget>
         [
           Positioned.fill(
-            child: Image(
+            child: CachedNetworkImage(
               fit: BoxFit.cover,
-              image: AssetImage(this.imagePath)
+              imageUrl: this.trip.images.first,
+              errorWidget: (BuildContext context, String url, Object error) => const ImagePlaceHolder(),
+              placeholder: (context, url) => const ImagePlaceHolder(),
             ),
           ),
             
@@ -194,4 +201,5 @@ class _TopLabel extends StatelessWidget
     );
   }
 }
+
 
