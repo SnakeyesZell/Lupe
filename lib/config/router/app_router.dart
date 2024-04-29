@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lupe/config/config.dart';
+import 'package:lupe/domain/domain.dart';
 
 import 'package:lupe/ui/pages/pages.dart';
 
@@ -32,14 +33,22 @@ abstract class AppRouter
                 path: AppRoutePaths.home,
                 name: AppRouteNames.home,
                 builder: (BuildContext context, GoRouterState state) => HomePage(key: state.pageKey),
-                // routes: <RouteBase>
-                // [
-                //   GoRoute(
-                //     path: 'subpage1',
-                //     name: 'SubPage1',
-                //     builder: (BuildContext context, GoRouterState state) => SubPage1(key: state.pageKey),
-                //   ),
-                // ],
+                routes: <RouteBase>
+                [
+                  
+                  GoRoute(
+                    path: AppRoutePaths.tripDetails,
+                    name: AppRouteNames.tripDetails,
+                    builder: (BuildContext context, GoRouterState state) 
+                    {                      
+                      return TripDetailsPage(
+                        key: state.pageKey,
+                        trip: state.extra as Trip,
+                      );
+                    },
+                  ),
+
+                ],
               ),
             ],
           ),
@@ -52,18 +61,9 @@ abstract class AppRouter
                 path: AppRoutePaths.profile,
                 name: AppRouteNames.profile,
                 builder: (BuildContext context, GoRouterState state) => ProfilePage(key: state.pageKey),
-                // routes: <RouteBase>
-                // [
-                //   GoRoute(
-                //     path: 'subpage1',
-                //     name: 'SubPage1',
-                //     builder: (BuildContext context, GoRouterState state) => SubPage1(key: state.pageKey),
-                //   ),
-                // ],
               ),
             ],
-          ),          
-
+          ),
         ], 
         builder: (BuildContext context, GoRouterState state, StatefulNavigationShell navigationShell) 
         {

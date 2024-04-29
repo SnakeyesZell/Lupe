@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'dart:math';
 import 'dart:async';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -25,30 +26,33 @@ class HomeGaleryItem extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {        
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(AppConstrains.imageRadius),
-      child: Stack(
-        children: <Widget>
-        [
-          Positioned.fill(child: _ImageCaroucel(images: this.trip.images)),
-            
-          Align(
-            alignment: Alignment.topCenter,
-            child: _TopLabel(
-              date: this.trip.date,
-              users: this.trip.linkedUsers,
+    return GestureDetector(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppConstrains.imageRadius),
+        child: Stack(
+          children: <Widget>
+          [
+            Positioned.fill(child: _ImageCaroucel(images: this.trip.images)),
+              
+            Align(
+              alignment: Alignment.topCenter,
+              child: _TopLabel(
+                date: this.trip.date,
+                users: this.trip.linkedUsers,
+              ),
             ),
-          ),
-      
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: _CardImageLabel(
-              title: this.trip.title,
-              description: this.trip.description,
-            ),
-          )
-        ],
+        
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: _CardImageLabel(
+                title: this.trip.title,
+                description: this.trip.description,
+              ),
+            )
+          ],
+        ),
       ),
+      onTap: () =>  context.goNamed(AppRouteNames.tripDetails, extra: this.trip),
     );
   }
 }
