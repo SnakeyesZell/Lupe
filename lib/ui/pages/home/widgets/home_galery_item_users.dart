@@ -36,7 +36,7 @@ class HomeGaleryItemUsers extends StatelessWidget
               shape: BoxShape.circle,
               border: Border.all(
                 width: itemsBorderWith,
-                color: Colors.white,
+                color: Theme.of(context).cardColor,
               ),
             ),
             child: ClipRRect(
