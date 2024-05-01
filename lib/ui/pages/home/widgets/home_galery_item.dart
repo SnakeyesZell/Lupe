@@ -146,6 +146,7 @@ class _ImageCaroucelState extends State<_ImageCaroucel>
         imageUrl: this.widget.images[index],
         errorWidget: (BuildContext context, String url, Object error) => const ImagePlaceHolder(),
         placeholder: (context, url) => const ImagePlaceHolder(),
+        errorListener: (Object value) => {},
       ),
     );
   }

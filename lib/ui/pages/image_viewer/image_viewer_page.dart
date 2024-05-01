@@ -22,6 +22,7 @@ class ImageViewerPage extends StatelessWidget
         child: Hero(
           tag: this.imageUrl,
           child: PhotoView(
+            minScale: PhotoViewComputedScale.contained,
             imageProvider: CachedNetworkImageProvider(
               this.imageUrl,
             ),

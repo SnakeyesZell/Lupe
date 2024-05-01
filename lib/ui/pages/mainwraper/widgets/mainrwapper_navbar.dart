@@ -21,30 +21,32 @@ class MainRwapperNavbar extends StatelessWidget
     double navbarHeight = 64;
     double horizontalMargin = (AppConstrains.viewportMargin + 20);
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: const BorderRadius.all(Radius.circular(AppConstrains.navbarRadius))
-      ),
-      height: navbarHeight,
-      margin: EdgeInsets.symmetric(
-        horizontal: horizontalMargin,
-        vertical: 5,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget> 
-        [
-          _NavbarSimpleButtos(
-            onTap: ()=> this.onTapItem(0), 
-            imagePath: (isHomePage) ? AppIcons.homeActive : AppIcons.home,
-          ),
-          const _CenterButton(),
-          _NavbarSimpleButtos(
-            onTap: ()=> this.onTapItem(1), 
-            imagePath: (isUserPage) ? AppIcons.userActive : AppIcons.user,
-          ),
-        ],
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: const BorderRadius.all(Radius.circular(AppConstrains.navbarRadius))
+        ),
+        height: navbarHeight,
+        margin: EdgeInsets.symmetric(
+          horizontal: horizontalMargin,
+          vertical: 5,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget> 
+          [
+            _NavbarSimpleButtos(
+              onTap: ()=> this.onTapItem(0), 
+              imagePath: (isHomePage) ? AppIcons.homeActive : AppIcons.home,
+            ),
+            const _CenterButton(),
+            _NavbarSimpleButtos(
+              onTap: ()=> this.onTapItem(1), 
+              imagePath: (isUserPage) ? AppIcons.userActive : AppIcons.user,
+            ),
+          ],
+        ),
       ),
     );
   }
