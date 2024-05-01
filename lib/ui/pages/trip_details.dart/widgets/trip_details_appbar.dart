@@ -19,6 +19,7 @@ class TripDetailsAppBar extends StatelessWidget
   {
     TripDetailsPageProvider pageProvider = context.watch<TripDetailsPageProvider>();
     double appBarHeight = 310;
+    double viewportWith = MediaQuery.of(context).size.width;
 
     return SliverAppBar(
       title: Text(
@@ -38,8 +39,12 @@ class TripDetailsAppBar extends StatelessWidget
               child: _CoverImage(),
             ),
 
-            Align(
-              alignment: const Alignment(0.90, 1),
+            // Align(
+            //   alignment: const Alignment(0.90, 1),
+            //   child: _Users(appBarHeight: appBarHeight),
+            // ),
+            Positioned(
+              right: (viewportWith / 2) - 175,
               child: _Users(appBarHeight: appBarHeight),
             ),
           ],
@@ -136,11 +141,12 @@ class _UserItem extends StatelessWidget
     double imageSize = (imageSizeWithOutPadding - (imagePadding * 2) );
     double translateX = (index == 1) ? 10.0 : 0.0;
     double translateY = (index == 1) ? 6.0 : 0.0;
+    Matrix4 transform = Matrix4.identity()
+                        ..rotateZ(-this.rotation)
+                        ..translate(translateX, translateY);
 
     return Transform(
-      transform: Matrix4.identity()
-                        ..rotateZ(-this.rotation)
-                        ..translate(translateX, translateY),
+      transform: transform,
       child: Container(
         padding: EdgeInsets.all(imagePadding),
         alignment: Alignment.center,
