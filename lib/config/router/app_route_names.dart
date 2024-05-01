@@ -6,6 +6,7 @@ abstract class AppRouteNames
   static const String signUp      = 'signup';
   static const String profile     = 'profile';
   static const String tripDetails = 'tripDetails';
+  static const String imageViewer = 'imageViewer';
 }
 
 

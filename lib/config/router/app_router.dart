@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lupe/config/config.dart';
 import 'package:lupe/domain/domain.dart';
+import 'package:lupe/ui/pages/image_viewer/image_viewer_page.dart';
 
 import 'package:lupe/ui/pages/pages.dart';
 
@@ -14,6 +15,7 @@ abstract class AppRouter
   static GoRouter router(String initialLocation) => GoRouter(
     navigatorKey: _rootNavigationKey,
     initialLocation: initialLocation,
+    // initialLocation: AppRoutePaths.imageViewer,
     routes: <RouteBase> 
     [
       GoRoute(
@@ -21,8 +23,28 @@ abstract class AppRouter
         name: AppRouteNames.login,
         builder: (BuildContext context, GoRouterState state) => LoginPage(key: state.pageKey),
       ),
+
+      GoRoute(
+        path: AppRoutePaths.imageViewer,
+        name: AppRouteNames.imageViewer,
+        builder: (BuildContext context, GoRouterState state) => ImageViewerPage(
+          imageUrl: state.extra as String,
+          // imageUrl: '',
+        ),
+      ),
+
+      GoRoute(
+        path: '/test',
+        name: 'test',
+        builder: (BuildContext context, GoRouterState state) => Scaffold(
+          body: GestureDetector(
+            onTap: ()=> GoRouter.of(context).pop(),
+            child: Center(child: Text('Test')),
+          ),
+        ),
+      ),      
       
-      StatefulShellRoute.indexedStack(        
+      StatefulShellRoute.indexedStack(   
         branches: <StatefulShellBranch> 
         [
           StatefulShellBranch(
@@ -34,20 +56,15 @@ abstract class AppRouter
                 name: AppRouteNames.home,
                 builder: (BuildContext context, GoRouterState state) => HomePage(key: state.pageKey),
                 routes: <RouteBase>
-                [
-                  
+                [                  
                   GoRoute(
                     path: AppRoutePaths.tripDetails,
                     name: AppRouteNames.tripDetails,
-                    builder: (BuildContext context, GoRouterState state) 
-                    {                      
-                      return TripDetailsPage(
-                        key: state.pageKey,
-                        trip: state.extra as Trip,
-                      );
-                    },
+                    builder: (BuildContext context, GoRouterState state) => TripDetailsPage(
+                      key: state.pageKey,
+                      trip: state.extra as Trip,
+                    ),
                   ),
-
                 ],
               ),
             ],

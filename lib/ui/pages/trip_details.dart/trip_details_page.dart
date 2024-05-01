@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:lupe/domain/domain.dart';
 import 'package:provider/provider.dart';
 
-import 'provider/trip_details_page_provider.dart';
 import 'widgets/trip_details_appbar.dart';
+import 'widgets/trip_details_galerty.dart';
+import 'provider/trip_details_page_provider.dart';
 
 class TripDetailsPage extends StatelessWidget 
 {
@@ -21,13 +22,20 @@ class TripDetailsPage extends StatelessWidget
   {
     return ChangeNotifierProvider(
       create: (BuildContext context)=> TripDetailsPageProvider(trip: this.trip),
-      child: const Scaffold(
-        body: CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          slivers: <Widget>
-          [
-            TripDetailsAppBar(),
-          ],
+      child: Scaffold(
+        body: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10),
+          child: const CustomScrollView(
+            physics: BouncingScrollPhysics(),
+            slivers: <Widget>
+            [
+              TripDetailsAppBar(),
+              SliverToBoxAdapter(child: SizedBox(height: kToolbarHeight)),
+              TripDetailsGalery(),
+              SliverToBoxAdapter(child: SizedBox(height: kToolbarHeight)),
+              SliverToBoxAdapter(child: SizedBox(height: kToolbarHeight)),
+            ],
+          ),
         ),
       ),
     );

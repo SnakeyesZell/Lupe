@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'dart:math';
 import 'dart:async';
-import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:lupe/domain/domain.dart';
@@ -26,13 +26,15 @@ class HomeGaleryItem extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {        
+    List<String> images = this.trip.images.take(5).toList();
+    
     return GestureDetector(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(AppConstrains.imageRadius),
         child: Stack(
           children: <Widget>
           [
-            Positioned.fill(child: _ImageCaroucel(images: this.trip.images)),
+            Positioned.fill(child: _ImageCaroucel(images: images)),
               
             Align(
               alignment: Alignment.topCenter,

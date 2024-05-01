@@ -1,9 +1,9 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:lupe/domain/domain.dart';
 
 import 'package:provider/provider.dart';
+import 'package:lupe/domain/domain.dart';
 import 'package:lupe/config/config.dart';
 import 'package:lupe/ui/shared/shared.dart';
 
@@ -20,8 +20,9 @@ class TripDetailsAppBar extends StatelessWidget
     TripDetailsPageProvider pageProvider = context.watch<TripDetailsPageProvider>();
     double appBarHeight = 310;
     double viewportWith = MediaQuery.of(context).size.width;
+    double positionedRight = ((viewportWith / 2) - 180);
 
-    return SliverAppBar(
+    return SliverAppBar(      
       title: Text(
         pageProvider.state.trip.title,
         style: Theme.of(context).textTheme.titleSmall!.copyWith(
@@ -38,13 +39,8 @@ class TripDetailsAppBar extends StatelessWidget
               alignment: Alignment.center,
               child: _CoverImage(),
             ),
-
-            // Align(
-            //   alignment: const Alignment(0.90, 1),
-            //   child: _Users(appBarHeight: appBarHeight),
-            // ),
             Positioned(
-              right: (viewportWith / 2) - 175,
+              right: positionedRight,
               child: _Users(appBarHeight: appBarHeight),
             ),
           ],
