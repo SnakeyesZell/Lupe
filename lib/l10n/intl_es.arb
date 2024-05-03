@@ -1,5 +1,8 @@
 {
-    "fisrtLabel": "Primer Texto",
+    "whiteSpace": " ",
+    "seeMore": "ver mas",
+    "seeLess": "menos",
+    "ellipsis": "...",
 
     "loginAppleButton": "Inicio Apple",
     "loginGoogleButton": "Inicio Google",
@@ -8,5 +11,7 @@
 
     "homeAppbarTitle": "Hola ",
     "homeTitle": "Otra aventurra que quieras compartir?",
-    "homeSearchInputHing": "Buscando aventureros?"
+    "homeSearchInputHing": "Buscando aventureros?",
+
+    "tripDetailsPageLabel": "Detalles del viaje"
 }

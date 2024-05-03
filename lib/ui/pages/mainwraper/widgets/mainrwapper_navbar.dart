@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:lupe/config/config.dart';
 
@@ -30,7 +31,7 @@ class MainRwapperNavbar extends StatelessWidget
         height: navbarHeight,
         margin: EdgeInsets.symmetric(
           horizontal: horizontalMargin,
-          vertical: 5,
+          vertical: (Platform.isAndroid) ? 5 : 0,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "fisrtLabel": MessageLookupByLibrary.simpleMessage("Primer Texto"),
+        "ellipsis": MessageLookupByLibrary.simpleMessage("..."),
         "homeAppbarTitle": MessageLookupByLibrary.simpleMessage("Hola "),
         "homeSearchInputHing":
             MessageLookupByLibrary.simpleMessage("Buscando aventureros?"),
@@ -34,6 +34,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Inicio Google"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
             "Comparte fácilmente tus experiencias alrededor\ndel mundo con tus compañeros de viaje"),
-        "loginTitle": MessageLookupByLibrary.simpleMessage("Lupe Viajes")
+        "loginTitle": MessageLookupByLibrary.simpleMessage("Lupe Viajes"),
+        "seeLess": MessageLookupByLibrary.simpleMessage("menos"),
+        "seeMore": MessageLookupByLibrary.simpleMessage("ver mas"),
+        "tripDetailsPageLabel":
+            MessageLookupByLibrary.simpleMessage("Detalles del viaje"),
+        "whiteSpace": MessageLookupByLibrary.simpleMessage(" ")
       };
 }

@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:lupe/generated/l10n.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:provider/provider.dart';
@@ -9,7 +10,6 @@ import 'package:lupe/ui/shared/shared.dart';
 
 import '../provider/trip_details_page_provider.dart';
 
-
 class TripDetailsAppBar extends StatelessWidget 
 {
   const TripDetailsAppBar({super.key});
@@ -17,16 +17,15 @@ class TripDetailsAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    TripDetailsPageProvider pageProvider = context.watch<TripDetailsPageProvider>();
     double appBarHeight = 310;
     double viewportWith = MediaQuery.of(context).size.width;
-    double positionedRight = ((viewportWith / 2) - 180);
+    double positionedRight = ((viewportWith / 2) - 190);
 
-    return SliverAppBar(      
+    return SliverAppBar(
       title: Text(
-        pageProvider.state.trip.title,
+        S.current.tripDetailsPageLabel,
         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-          fontSize: AppFontSizes.labelMedium,
+          fontSize: AppFontSizes.labelSmall,
         ),
       ),
       centerTitle: true,
@@ -149,15 +148,29 @@ class _UserItem extends StatelessWidget
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Theme.of(context).scaffoldBackgroundColor,
-          // color: Colors.red,
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: CachedNetworkImage(
-            height: imageSize,
-            width: imageSize,
-            fit: BoxFit.cover,
-            imageUrl: this.imageUrl,
+        child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: <BoxShadow> 
+            [
+              BoxShadow(
+                // color: Colors.black.withOpacity(0.3),
+                color: Theme.of(context).shadowColor,
+                blurRadius: 5,
+                spreadRadius: -5,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: CachedNetworkImage(
+              height: imageSize,
+              width: imageSize,
+              fit: BoxFit.cover,
+              imageUrl: this.imageUrl,
+            ),
           ),
         ),
       ),
