@@ -1,5 +1,8 @@
 {
-    "fisrtLabel": "First Label",
+    "whiteSpace": " ",
+    "seeMore": "see more",
+    "seeLess": "less",
+    "ellipsis": "...",
 
     "loginAppleButton": "Apple Sign In",
     "loginGoogleButton": "Google Sign In",
@@ -8,5 +11,8 @@
 
     "homeAppbarTitle": "Hi ",
     "homeTitle": "Another adventure you want to share?",
-    "homeSearchInputHing": "Looking for travel mates?"
+    "homeSearchInputHing": "Looking for travel mates?",
+    
+    "tripDetailsPageLabel": "Trip details",
+    "tripDetailsAdmin": "Admin"
 }

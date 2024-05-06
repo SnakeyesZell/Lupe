@@ -43,7 +43,7 @@ class LoginBottomItems extends StatelessWidget
 
 class _Buttons extends StatelessWidget 
 {
-  const _Buttons({Key? key}) : super(key: key);
+  const _Buttons();
 
   @override
   Widget build(BuildContext context) 
@@ -99,7 +99,7 @@ class _Buttons extends StatelessWidget
   }) async
   {
     await authProvider.signIn(authMethod);
-    context.go(AppRoutePaths.home);
+    if(context.mounted) context.go(AppRoutePaths.home);
   }  
 }
 

@@ -31,7 +31,7 @@ class HomeAppBar extends StatelessWidget
 
 class _NameLabel extends StatelessWidget 
 {
-  const _NameLabel({super.key});
+  const _NameLabel();
 
   @override
   Widget build(BuildContext context) 
@@ -67,7 +67,7 @@ class _NameLabel extends StatelessWidget
 
 class _UserProfileImage extends StatelessWidget 
 {
-  const _UserProfileImage({super.key});
+  const _UserProfileImage();
 
   @override
   Widget build(BuildContext context) 

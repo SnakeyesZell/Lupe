@@ -9,7 +9,7 @@ abstract class AppTheme
     appBarTheme: const AppBarTheme(backgroundColor: Color(0xffedf0f5)),
     primaryColor: const Color(0xfffee600),
     cardColor: Colors.white,
-    shadowColor: Colors.grey[400]!.withOpacity(0.3),
+    shadowColor: Colors.grey,
     hintColor: Colors.grey,
     textTheme: AppTextTheme.lightTextTheme,
   );

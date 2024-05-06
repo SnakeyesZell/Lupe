@@ -50,11 +50,41 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `First Label`
-  String get fisrtLabel {
+  /// ` `
+  String get whiteSpace {
     return Intl.message(
-      'First Label',
-      name: 'fisrtLabel',
+      ' ',
+      name: 'whiteSpace',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `see more`
+  String get seeMore {
+    return Intl.message(
+      'see more',
+      name: 'seeMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `less`
+  String get seeLess {
+    return Intl.message(
+      'less',
+      name: 'seeLess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `...`
+  String get ellipsis {
+    return Intl.message(
+      '...',
+      name: 'ellipsis',
       desc: '',
       args: [],
     );
@@ -125,6 +155,26 @@ class S {
     return Intl.message(
       'Looking for travel mates?',
       name: 'homeSearchInputHing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trip details`
+  String get tripDetailsPageLabel {
+    return Intl.message(
+      'Trip details',
+      name: 'tripDetailsPageLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Admin`
+  String get tripDetailsAdmin {
+    return Intl.message(
+      'Admin',
+      name: 'tripDetailsAdmin',
       desc: '',
       args: [],
     );

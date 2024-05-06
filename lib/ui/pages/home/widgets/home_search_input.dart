@@ -19,7 +19,7 @@ class HomeSearchInput extends StatelessWidget
         boxShadow: <BoxShadow> 
         [
           BoxShadow(
-            color: Theme.of(context).shadowColor,
+            color: Theme.of(context).shadowColor.withOpacity(0.3),
             blurRadius: 20,
             spreadRadius: -15,
             offset: const Offset(0, 20),
@@ -35,7 +35,7 @@ class HomeSearchInput extends StatelessWidget
 
 class _Input extends StatelessWidget 
 {
-  const _Input({super.key});
+  const _Input();
 
   @override
   Widget build(BuildContext context) 

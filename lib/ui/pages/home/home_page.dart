@@ -24,18 +24,17 @@ class _Body extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    double bottomSpacing = (kToolbarHeight * 1.5);
-
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: AppConstrains.viewportMargin),
-      child: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
+      child:const  CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: <Widget>
         [
-          const HomeAppBar(),
-          const SliverToBoxAdapter(child: SizedBox(height: AppConstrains.spacingScroll)),
-          const HomeGalery(),
-          SliverToBoxAdapter(child: SizedBox(height: bottomSpacing)),
+          HomeAppBar(),
+          SliverToBoxAdapter(child: SizedBox(height: AppConstrains.spacingScroll)),
+          HomeGalery(),
+          SliverToBoxAdapter(child: SizedBox(height: kTextTabBarHeight)),
+          SliverToBoxAdapter(child: SizedBox(height: kTextTabBarHeight)),
         ],
       ),
     );
