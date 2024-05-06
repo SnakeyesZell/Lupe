@@ -5,7 +5,7 @@ part 'trip_details_page_state.dart';
 
 class TripDetailsPageProvider extends ChangeNotifier 
 {
-  late TripDetailsPageState _state;
+  final TripDetailsPageState _state;
 
   TripDetailsPageProvider(
   {

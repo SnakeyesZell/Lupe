@@ -86,7 +86,7 @@ class _NavbarSimpleButtos extends StatelessWidget
 
 class _CenterButton extends StatelessWidget 
 {
-  const _CenterButton({super.key});
+  const _CenterButton();
 
   @override
   Widget build(BuildContext context) 

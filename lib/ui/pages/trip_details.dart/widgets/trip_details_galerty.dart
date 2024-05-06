@@ -87,7 +87,6 @@ class _Item extends StatelessWidget
 
   const _Item(
   {
-    super.key,
     required this.isTopLeftCorner,
     required this.isTopRightCorner,
     required this.isBottomLefttCorner,

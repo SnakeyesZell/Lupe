@@ -35,7 +35,7 @@ class HomeSearchInput extends StatelessWidget
 
 class _Input extends StatelessWidget 
 {
-  const _Input({super.key});
+  const _Input();
 
   @override
   Widget build(BuildContext context) 

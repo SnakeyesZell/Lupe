@@ -38,6 +38,6 @@ class TripDto
     "images"      : List<dynamic>.from(images.map((x) => x)),
   };
 
-  static TripDto TripDtoFromJson(String str) => TripDto.fromJson(json.decode(str));
-  static String TripDtoToJson(TripDto data) => json.encode(data.toJson());
+  static TripDto tripDtoFromJson(String str) => TripDto.fromJson(json.decode(str));
+  static String tripDtoToJson(TripDto data) => json.encode(data.toJson());
 }

@@ -15,7 +15,6 @@ abstract class AppRouter
   static GoRouter router(String initialLocation) => GoRouter(
     navigatorKey: _rootNavigationKey,
     initialLocation: initialLocation,
-    // initialLocation: AppRoutePaths.imageViewer,
     routes: <RouteBase> 
     [
       GoRoute(
@@ -29,20 +28,8 @@ abstract class AppRouter
         name: AppRouteNames.imageViewer,
         builder: (BuildContext context, GoRouterState state) => ImageViewerPage(
           imageUrl: state.extra as String,
-          // imageUrl: '',
         ),
-      ),
-
-      GoRoute(
-        path: '/test',
-        name: 'test',
-        builder: (BuildContext context, GoRouterState state) => Scaffold(
-          body: GestureDetector(
-            onTap: ()=> GoRouter.of(context).pop(),
-            child: Center(child: Text('Test')),
-          ),
-        ),
-      ),      
+      ),  
       
       StatefulShellRoute.indexedStack(   
         branches: <StatefulShellBranch> 
