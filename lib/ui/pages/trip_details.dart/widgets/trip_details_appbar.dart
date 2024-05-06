@@ -19,7 +19,7 @@ class TripDetailsAppBar extends StatelessWidget
   {
     double appBarHeight = 310;
     double viewportWith = MediaQuery.of(context).size.width;
-    double positionedRight = ((viewportWith / 2) - 190);
+    double positionedRight = ((viewportWith / 2) - 175);
 
     return SliverAppBar(
       title: Text(

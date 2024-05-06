@@ -26,7 +26,16 @@ class MainRwapperNavbar extends StatelessWidget
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
-          borderRadius: const BorderRadius.all(Radius.circular(AppConstrains.navbarRadius))
+          borderRadius: const BorderRadius.all(Radius.circular(AppConstrains.navbarRadius)),
+          boxShadow: <BoxShadow> 
+          [
+            BoxShadow(
+              color: Theme.of(context).shadowColor.withOpacity(0.1),
+              blurRadius: 5,
+              spreadRadius: 5,
+              offset: const Offset(0, 5),
+            ),
+          ],
         ),
         height: navbarHeight,
         margin: EdgeInsets.symmetric(
@@ -40,11 +49,13 @@ class MainRwapperNavbar extends StatelessWidget
             _NavbarSimpleButtos(
               onTap: ()=> this.onTapItem(0), 
               imagePath: (isHomePage) ? AppIcons.homeActive : AppIcons.home,
+              tabName: 'Home',
             ),
             const _CenterButton(),
             _NavbarSimpleButtos(
               onTap: ()=> this.onTapItem(1), 
               imagePath: (isUserPage) ? AppIcons.userActive : AppIcons.user,
+              tabName: 'Profile',
             ),
           ],
         ),
@@ -58,11 +69,13 @@ class _NavbarSimpleButtos extends StatelessWidget
   final VoidCallback onTap;
   final String imagePath;
   final double? size;
+  final String? tabName;
 
   const _NavbarSimpleButtos(
   {
     required this.onTap, 
     required this.imagePath, 
+    this.tabName, 
     this.size = 35, 
   });
 
@@ -73,12 +86,26 @@ class _NavbarSimpleButtos extends StatelessWidget
 
     return GestureDetector(
       onTap: this.onTap,
-      child: Container(
-        padding: EdgeInsets.all(padding),
-        child: Image(
-          height: this.size,
-          image: AssetImage(this.imagePath),
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: 
+        [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: padding),
+            child: Image(
+              height: this.size,
+              image: AssetImage(this.imagePath),
+            ),
+          ),
+          (this.tabName != null) 
+          ? Text(
+              this.tabName!,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                fontSize: AppFontSizes.bodyExtraSmall,
+              ),
+            )
+          : const SizedBox.shrink(),
+        ],
       ),
     );
   }
@@ -91,7 +118,8 @@ class _CenterButton extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return Container(      
+    return Container(  
+      padding: const EdgeInsets.symmetric(vertical: 5),    
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(15)

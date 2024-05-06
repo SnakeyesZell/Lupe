@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginTitle": MessageLookupByLibrary.simpleMessage("Lupe Viajes"),
         "seeLess": MessageLookupByLibrary.simpleMessage("menos"),
         "seeMore": MessageLookupByLibrary.simpleMessage("ver mas"),
+        "tripDetailsAdmin": MessageLookupByLibrary.simpleMessage("Admin"),
         "tripDetailsPageLabel":
             MessageLookupByLibrary.simpleMessage("Detalles del viaje"),
         "whiteSpace": MessageLookupByLibrary.simpleMessage(" ")

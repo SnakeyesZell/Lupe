@@ -72,7 +72,8 @@ abstract class AppFontSizes
   static const double labelSmall  = 20;
 
   // === BODY ===
-  static const double bodyLarge  = 18;
-  static const double bodyMedium = 16;
-  static const double bodySmall  = 14;  
+  static const double bodyLarge       = 18;
+  static const double bodyMedium      = 16;
+  static const double bodySmall       = 14;  
+  static const double bodyExtraSmall  = 12;  
 }

@@ -169,6 +169,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Admin`
+  String get tripDetailsAdmin {
+    return Intl.message(
+      'Admin',
+      name: 'tripDetailsAdmin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

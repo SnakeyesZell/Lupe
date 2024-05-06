@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lupe/generated/l10n.dart';
 
@@ -29,36 +30,44 @@ class _TripDetailsDescriptionState extends State<TripDetailsDescription>
     TripDetailsPageProvider pageProvider = context.watch<TripDetailsPageProvider>();
     String text = pageProvider.state.trip.description;
     List<String> splitedText = text.split(S.current.whiteSpace);
-    List<Widget> allItems = this.getItems(splitedText);
+    List<InlineSpan> allItems = this.getItems(splitedText);
     bool isLargeText = (allItems.length > 40);
 
-    List<Widget> items = (isLargeText && !this.seeMore) 
+    List<InlineSpan> items = (isLargeText && !this.seeMore) 
     ? allItems.take(30).toList() 
     : allItems;
 
     items.removeLast();
 
-    items.add((this.seeMore) ? const SizedBox.shrink() : Text(S.current.ellipsis));  
-    items.add(Text(S.current.whiteSpace));
+    items.add((this.seeMore) ? TextSpan(text: S.current.whiteSpace) : TextSpan(text: S.current.ellipsis));  
+    items.add(TextSpan(text: S.current.whiteSpace));
     items.add((isLargeText) 
-      ? _ExpanTextButton(
-          onTap: this.toggleSeeMore,
-          seeMore: this.seeMore,
-        )  
-      : const SizedBox.shrink()
+      ? TextSpan(
+          text: (this.seeMore) ? S.current.seeLess : S.current.seeMore,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: Colors.blue,
+          ),
+          recognizer: TapGestureRecognizer()..onTap = this.toggleSeeMore
+        )
+      : TextSpan(text: S.current.whiteSpace)
     );
 
-    return Wrap(children: items);
+    return RichText(      
+      text: TextSpan(
+        style: Theme.of(context).textTheme.bodyMedium,
+        children: items,
+      ),
+    );
   }
 
-  List<Widget> getItems(List<String> splitedText) 
+  List<InlineSpan> getItems(List<String> splitedText) 
   {
-    List<Widget> items = [];
+    List<InlineSpan> items = [];
 
     for (String element in splitedText) 
     { 
-      items.add(Text(element));
-      items.add(Text(S.current.whiteSpace));
+      items.add(TextSpan(text: element));
+      items.add(TextSpan(text: S.current.whiteSpace));
     }    
     return items;
   }
@@ -66,28 +75,4 @@ class _TripDetailsDescriptionState extends State<TripDetailsDescription>
   void toggleSeeMore()=> setState(()=> this.seeMore = !this.seeMore);
 }
 
-class _ExpanTextButton extends StatelessWidget 
-{
-  final bool seeMore;
-  final VoidCallback onTap;
 
-  const _ExpanTextButton(
-  {
-    required this.onTap, 
-    required this.seeMore,
-  });
-
-  @override
-  Widget build(BuildContext context) 
-  {
-    return GestureDetector(
-      onTap: this.onTap,
-      child: Text(
-        (this.seeMore) ? S.current.seeLess : S.current.seeMore,
-        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-          color: Colors.blue,
-        ),
-      ),
-    );
-  }
-}

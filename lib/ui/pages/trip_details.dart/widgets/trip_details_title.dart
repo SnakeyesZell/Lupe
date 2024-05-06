@@ -40,7 +40,11 @@ class _TripDetailsTitleState extends State<TripDetailsTitle>
   Widget build(BuildContext context) 
   {
     return Container(
-      margin: const EdgeInsets.only(bottom: AppConstrains.textSpacingScroll),
+      margin: const EdgeInsets.only(
+        bottom: AppConstrains.textSpacingScroll,
+        left: AppConstrains.viewportMargin,
+        right: AppConstrains.viewportMargin,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>

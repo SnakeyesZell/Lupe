@@ -13,5 +13,6 @@
     "homeTitle": "Otra aventurra que quieras compartir?",
     "homeSearchInputHing": "Buscando aventureros?",
 
-    "tripDetailsPageLabel": "Detalles del viaje"
+    "tripDetailsPageLabel": "Detalles del viaje",
+    "tripDetailsAdmin": "Admin"
 }
