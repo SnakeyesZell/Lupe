@@ -17,9 +17,10 @@ class TripDetailsAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    double appBarHeight = 310;
+    double appBarHeight = (300 + kToolbarHeight);
     double viewportWith = MediaQuery.of(context).size.width;
     double positionedRight = ((viewportWith / 2) - 175);
+    double positionedBottom = 0;
 
     return SliverAppBar(
       title: Text(
@@ -29,20 +30,25 @@ class TripDetailsAppBar extends StatelessWidget
         ),
       ),
       centerTitle: true,
-      bottom: PreferredSize(
-        preferredSize: Size(double.infinity, appBarHeight),
-        child: Stack(
-          children: <Widget>
-          [
-            const Align(
-              alignment: Alignment.center,
-              child: _CoverImage(),
-            ),
-            Positioned(
-              right: positionedRight,
-              child: _Users(appBarHeight: appBarHeight),
-            ),
-          ],
+      expandedHeight: appBarHeight,
+      flexibleSpace: FlexibleSpaceBar(
+        collapseMode: CollapseMode.pin,
+        background: Container(
+          alignment: Alignment.bottomCenter,
+          child: Stack(
+            children: <Widget>
+            [
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: _CoverImage(),
+              ),
+              Positioned(
+                right: positionedRight,
+                bottom: positionedBottom,
+                child: _Users(appBarHeight: appBarHeight),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -89,22 +95,26 @@ class _Users extends StatelessWidget
     int itemCount = users.length;
     double rotation = (math.pi / 7);
     double maxWith = 70;
+    double trnaslateY = 20.0;
 
-    return Transform.rotate(
-      angle: rotation,
-      child: Container(
-        width: maxWith,
-        height: this.appBarHeight,
-        alignment: Alignment.bottomCenter,
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: itemCount,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context,int index) => _UserItem(
-            rotation: rotation, 
-            imageUrl: users[index].imageUrl,
-            index: index,
-            maxWith: maxWith,
+    return Transform.translate(
+      offset: Offset(0.0, trnaslateY),
+      child: Transform.rotate(
+        angle: rotation,
+        child: Container(
+          width: maxWith,
+          height: this.appBarHeight,
+          alignment: Alignment.bottomCenter,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: itemCount,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context,int index) => _UserItem(
+              rotation: rotation, 
+              imageUrl: users[index].imageUrl,
+              index: index,
+              maxWith: maxWith,
+            ),
           ),
         ),
       ),
@@ -155,7 +165,6 @@ class _UserItem extends StatelessWidget
             boxShadow: <BoxShadow> 
             [
               BoxShadow(
-                // color: Colors.black.withOpacity(0.3),
                 color: Theme.of(context).shadowColor,
                 blurRadius: 5,
                 spreadRadius: -5,
