@@ -13,3 +13,4 @@ export 'repository/itrips_repository.dart';
 
 // -- ENUMS
 export 'enums/auth_method.dart';
+export 'enums/navbar_tabs.dart';
