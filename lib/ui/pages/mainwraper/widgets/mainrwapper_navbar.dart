@@ -24,45 +24,43 @@ class MainRwapperNavbar extends StatelessWidget
     double navbarHeight = 64;
     double horizontalMargin = (AppConstrains.viewportMargin + 20);
 
-    return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
-          borderRadius: const BorderRadius.all(Radius.circular(AppConstrains.navbarRadius)),
-          boxShadow: <BoxShadow> 
-          [
-            BoxShadow(
-              color: Theme.of(context).shadowColor.withOpacity(0.1),
-              blurRadius: 5,
-              spreadRadius: 5,
-              offset: const Offset(0, 5),
-            ),
-          ],
-        ),
-        height: navbarHeight,
-        margin: EdgeInsets.symmetric(
-          horizontal: horizontalMargin,
-          vertical: (Platform.isAndroid) ? 5 : 0,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget> 
-          [
-            _NavbarSimpleButtos(
-              onTap: ()=> this.onTapItem(0), 
-              imagePath: AppIcons.home2,
-              tabName: S.current.homeTab1Label,
-              isActive: (this.selectedIndex == NavBarTabs.home.tabIndex),
-            ),
-            const _CenterButton(),
-            _NavbarSimpleButtos(
-              onTap: ()=> this.onTapItem(1), 
-              imagePath: AppIcons.user,
-              tabName: S.current.homeTab3Label,
-              isActive: (this.selectedIndex == NavBarTabs.profile.tabIndex),
-            ),
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: const BorderRadius.all(Radius.circular(AppConstrains.navbarRadius)),
+        boxShadow: <BoxShadow> 
+        [
+          BoxShadow(
+            color: Theme.of(context).shadowColor.withOpacity(0.1),
+            blurRadius: 5,
+            spreadRadius: 5,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      height: navbarHeight,
+      margin: EdgeInsets.symmetric(
+        horizontal: horizontalMargin,
+        vertical: (Platform.isAndroid) ? 5 : 20,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget> 
+        [
+          _NavbarSimpleButtos(
+            onTap: ()=> this.onTapItem(0), 
+            imagePath: AppIcons.home2,
+            tabName: S.current.homeTab1Label,
+            isActive: (this.selectedIndex == NavBarTabs.home.tabIndex),
+          ),
+          const _CenterButton(),
+          _NavbarSimpleButtos(
+            onTap: ()=> this.onTapItem(1), 
+            imagePath: AppIcons.user,
+            tabName: S.current.homeTab3Label,
+            isActive: (this.selectedIndex == NavBarTabs.profile.tabIndex),
+          ),
+        ],
       ),
     );
   }
