@@ -209,6 +209,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Galery`
+  String get tripDetailsTab1Label {
+    return Intl.message(
+      'Galery',
+      name: 'tripDetailsTab1Label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Users`
+  String get tripDetailsTab2Label {
+    return Intl.message(
+      'Users',
+      name: 'tripDetailsTab2Label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Map`
+  String get tripDetailsTab3Label {
+    return Intl.message(
+      'Map',
+      name: 'tripDetailsTab3Label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a new trip mate`
+  String get tripDetailsAddUser {
+    return Intl.message(
+      'Add a new trip mate',
+      name: 'tripDetailsAddUser',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

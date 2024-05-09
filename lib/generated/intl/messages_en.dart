@@ -40,9 +40,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginTitle": MessageLookupByLibrary.simpleMessage("Lupe Trips"),
         "seeLess": MessageLookupByLibrary.simpleMessage("less"),
         "seeMore": MessageLookupByLibrary.simpleMessage("see more"),
+        "tripDetailsAddUser":
+            MessageLookupByLibrary.simpleMessage("Add a new trip mate"),
         "tripDetailsAdmin": MessageLookupByLibrary.simpleMessage("Admin"),
         "tripDetailsPageLabel":
             MessageLookupByLibrary.simpleMessage("Trip details"),
+        "tripDetailsTab1Label": MessageLookupByLibrary.simpleMessage("Galery"),
+        "tripDetailsTab2Label": MessageLookupByLibrary.simpleMessage("Users"),
+        "tripDetailsTab3Label": MessageLookupByLibrary.simpleMessage("Map"),
         "whiteSpace": MessageLookupByLibrary.simpleMessage(" ")
       };
 }

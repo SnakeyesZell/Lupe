@@ -23,6 +23,7 @@ class TripDetailsUsersTab extends StatelessWidget
         slivers: <Widget>
         [          
           SliverToBoxAdapter(child: SizedBox(height: AppConstrains.spacingScroll)),
+          SliverToBoxAdapter(child: _AddUserTile()),
           _UsersList(),
         ],
       ),
@@ -40,6 +41,7 @@ class _UsersList extends StatelessWidget
     TripDetailsPageProvider pageProvider = context.watch<TripDetailsPageProvider>();
 
     return SliverList.builder(
+      
       itemCount: pageProvider.state.trip.linkedUsers.length,
       itemBuilder: (BuildContext context, int index) 
       {
@@ -55,8 +57,6 @@ class _UsersList extends StatelessWidget
           decoration: BoxDecoration(
             color: Theme.of(context).shadowColor.withOpacity(0.15),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular((index == 0) ? AppConstrains.imageRadius : 0),
-              topRight: Radius.circular((index == 0) ? AppConstrains.imageRadius : 0),
               bottomLeft: Radius.circular((isLast) ? AppConstrains.imageRadius : 0),
               bottomRight: Radius.circular((isLast) ? AppConstrains.imageRadius : 0),
             ),
@@ -133,4 +133,45 @@ class _TrallingTale extends StatelessWidget
     );
   }
 }
+
+class _AddUserTile extends StatelessWidget 
+{
+  const _AddUserTile();
+
+  @override
+  Widget build(BuildContext context) 
+  {
+    return Container(
+      padding: const EdgeInsets.only(top: 10),
+      decoration: BoxDecoration(
+        color: Theme.of(context).shadowColor.withOpacity(0.15),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(AppConstrains.imageRadius),
+          topRight: Radius.circular(AppConstrains.imageRadius),
+        ),
+      ),
+      child: ListTile(
+        title: Text(
+          S.current.tripDetailsAddUser ,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        leading: Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white.withOpacity(0.5)
+          ),
+          child: Icon(
+            Icons.add,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 

@@ -40,9 +40,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginTitle": MessageLookupByLibrary.simpleMessage("Lupe Viajes"),
         "seeLess": MessageLookupByLibrary.simpleMessage("menos"),
         "seeMore": MessageLookupByLibrary.simpleMessage("ver mas"),
+        "tripDetailsAddUser":
+            MessageLookupByLibrary.simpleMessage("Añade a un nuevo compañero"),
         "tripDetailsAdmin": MessageLookupByLibrary.simpleMessage("Admin"),
         "tripDetailsPageLabel":
             MessageLookupByLibrary.simpleMessage("Detalles del viaje"),
+        "tripDetailsTab1Label": MessageLookupByLibrary.simpleMessage("Galeria"),
+        "tripDetailsTab2Label":
+            MessageLookupByLibrary.simpleMessage("Usuarios"),
+        "tripDetailsTab3Label": MessageLookupByLibrary.simpleMessage("Mapa"),
         "whiteSpace": MessageLookupByLibrary.simpleMessage(" ")
       };
 }

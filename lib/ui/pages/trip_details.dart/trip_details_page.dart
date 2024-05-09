@@ -34,7 +34,7 @@ class _TripDetailsPageState extends State<TripDetailsPage> with SingleTickerProv
   void initState() 
   {
 		this.tabController = TabController(
-			length: 2,
+			length: 3,
 			initialIndex: 0, 
 			vsync: this,
 		);
@@ -68,10 +68,11 @@ class _TripDetailsPageState extends State<TripDetailsPage> with SingleTickerProv
           },
           body: TabBarView(		
             controller: this.tabController,						
-            physics: const BouncingScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>
             [
               TripDetailsGaleryTab(),
+              TripDetailsUsersTab(),
               TripDetailsUsersTab(),
             ]
           ),

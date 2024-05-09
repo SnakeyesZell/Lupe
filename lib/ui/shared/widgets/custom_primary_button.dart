@@ -40,7 +40,9 @@ class CustomPrimaryButton extends StatelessWidget
               this.leading,
               Text(
                 this.label,
-                style: Theme.of(context).textTheme.labelMedium,
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  color: Colors.white,
+                ),
               ),
               this.traling,
             ],

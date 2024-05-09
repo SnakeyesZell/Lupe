@@ -88,7 +88,7 @@ class _NavbarSimpleButtos extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    double iconSize = 38;
+    double iconSize = 35;
     double padding = 5;
     Color activeColor = (this.isActive) 
     ? Theme.of(context).primaryColor 

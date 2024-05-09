@@ -49,7 +49,7 @@ class _TripDetailsTitleState extends State<TripDetailsTitle>
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>
         [
-          _FormTitl(
+          _FormTitle(
             focusNode: this.focusNode,
             controller: this.controller,
           ),
@@ -61,12 +61,12 @@ class _TripDetailsTitleState extends State<TripDetailsTitle>
   }
 }
 
-class _FormTitl extends StatelessWidget 
+class _FormTitle extends StatelessWidget 
 {
   final FocusNode focusNode;
   final TextEditingController controller;
 
-  const _FormTitl(
+  const _FormTitle(
   {
     required this.focusNode, 
     required this.controller,

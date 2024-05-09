@@ -17,5 +17,9 @@
     "homeTab3Label": "Profile",
     
     "tripDetailsPageLabel": "Trip details",
-    "tripDetailsAdmin": "Admin"
+    "tripDetailsAdmin": "Admin",
+    "tripDetailsTab1Label": "Galery",
+    "tripDetailsTab2Label": "Users",
+    "tripDetailsTab3Label": "Map",
+    "tripDetailsAddUser": "Add a new trip mate"
 }

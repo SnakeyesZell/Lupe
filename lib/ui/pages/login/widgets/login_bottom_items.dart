@@ -64,10 +64,7 @@ class _Buttons extends StatelessWidget
             authProvider: authProvider,
             authMethod: AuthMethod.google,
           ),
-          traling: const _ButttonIcon(
-            imagePath: AppIcons.google,
-            size: 28,
-          ),
+          leading: const _ButttonIcon(imagePath: AppIcons.google),
         ),
 
         const SizedBox(height: 15),
@@ -81,10 +78,7 @@ class _Buttons extends StatelessWidget
               authProvider: authProvider,
               authMethod: AuthMethod.apple,
             ),
-            traling: const _ButttonIcon(
-              imagePath: AppIcons.apple,
-              size: 35,
-            ),
+            leading: const _ButttonIcon(imagePath: AppIcons.apple),
           )
         : const SizedBox.shrink(),
       ],
@@ -106,23 +100,31 @@ class _Buttons extends StatelessWidget
 class _ButttonIcon extends StatelessWidget 
 {
   final String imagePath;
-  final double size;
 
   const _ButttonIcon(
   {
     required this.imagePath, 
-    required this.size
   });
 
   @override
   Widget build(BuildContext context) 
   {
+    double size = (Platform.isAndroid) ? 24 : 31;
+
     return Container(
-      padding: const EdgeInsets.only(left: 5),
-      child: Image(
-        height: this.size,
-        width: this.size,
-        image: AssetImage(this.imagePath),
+      padding: const EdgeInsets.all(5),
+      margin: EdgeInsets.only(right: (Platform.isAndroid) ? 10 : 5),
+      decoration: BoxDecoration(
+        color: (Platform.isAndroid) ? Colors.white : null,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Transform.translate(
+        offset: Offset(0, (Platform.isAndroid) ? 0 : -2),
+        child: Image(
+          height: size,
+          width: size,
+          image: AssetImage(this.imagePath),
+        ),
       ),
     );
   }
