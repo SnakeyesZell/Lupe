@@ -160,6 +160,36 @@ class S {
     );
   }
 
+  /// `Home`
+  String get homeTab1Label {
+    return Intl.message(
+      'Home',
+      name: 'homeTab1Label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get homeTab2Label {
+    return Intl.message(
+      'Create',
+      name: 'homeTab2Label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get homeTab3Label {
+    return Intl.message(
+      'Profile',
+      name: 'homeTab3Label',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Trip details`
   String get tripDetailsPageLabel {
     return Intl.message(

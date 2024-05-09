@@ -1,6 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:lupe/generated/l10n.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:lupe/config/config.dart';
+import 'package:lupe/domain/domain.dart';
 
 class MainRwapperNavbar extends StatelessWidget 
 {
@@ -17,8 +21,6 @@ class MainRwapperNavbar extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {     
-    bool isHomePage = (this.selectedIndex == 0);
-    bool isUserPage = (this.selectedIndex == 1);
     double navbarHeight = 64;
     double horizontalMargin = (AppConstrains.viewportMargin + 20);
 
@@ -48,14 +50,16 @@ class MainRwapperNavbar extends StatelessWidget
           [
             _NavbarSimpleButtos(
               onTap: ()=> this.onTapItem(0), 
-              imagePath: (isHomePage) ? AppIcons.homeActive : AppIcons.home,
-              tabName: 'Home',
+              imagePath: AppIcons.home2,
+              tabName: S.current.homeTab1Label,
+              isActive: (this.selectedIndex == NavBarTabs.home.tabIndex),
             ),
             const _CenterButton(),
             _NavbarSimpleButtos(
               onTap: ()=> this.onTapItem(1), 
-              imagePath: (isUserPage) ? AppIcons.userActive : AppIcons.user,
-              tabName: 'Profile',
+              imagePath: AppIcons.user,
+              tabName: S.current.homeTab3Label,
+              isActive: (this.selectedIndex == NavBarTabs.profile.tabIndex),
             ),
           ],
         ),
@@ -67,22 +71,30 @@ class MainRwapperNavbar extends StatelessWidget
 class _NavbarSimpleButtos extends StatelessWidget 
 {
   final VoidCallback onTap;
-  final String imagePath;
-  final double? size;
+  final String imagePath;  
   final String? tabName;
+  final bool isActive;
+  final bool isFilled;
 
   const _NavbarSimpleButtos(
   {
     required this.onTap, 
     required this.imagePath, 
+    required this.isActive, 
+    this.isFilled = false, 
     this.tabName, 
-    this.size = 35, 
   });
 
   @override
   Widget build(BuildContext context) 
   {
-    double padding = 5; 
+    double iconSize = 38;
+    double padding = 5;
+    Color activeColor = (this.isActive) 
+    ? Theme.of(context).primaryColor 
+    : (this.isFilled) 
+      ? Colors.white 
+      : Theme.of(context).shadowColor;
 
     return GestureDetector(
       onTap: this.onTap,
@@ -92,9 +104,10 @@ class _NavbarSimpleButtos extends StatelessWidget
         [
           Container(
             padding: EdgeInsets.symmetric(horizontal: padding),
-            child: Image(
-              height: this.size,
-              image: AssetImage(this.imagePath),
+            child: SvgPicture.asset(
+              height: iconSize,
+              this.imagePath,
+              colorFilter: ColorFilter.mode(activeColor, BlendMode.srcIn),
             ),
           ),
           (this.tabName != null) 
@@ -102,6 +115,7 @@ class _NavbarSimpleButtos extends StatelessWidget
               this.tabName!,
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: AppFontSizes.bodyExtraSmall,
+                color: activeColor,
               ),
             )
           : const SizedBox.shrink(),
@@ -126,8 +140,9 @@ class _CenterButton extends StatelessWidget
       ),
       child: _NavbarSimpleButtos(
         onTap: (){}, 
-        size: 38,
         imagePath: AppIcons.navigate,
+        isActive: false,
+        isFilled: true,
       ),
     );
   }

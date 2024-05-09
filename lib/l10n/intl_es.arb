@@ -12,6 +12,9 @@
     "homeAppbarTitle": "Hola ",
     "homeTitle": "Otra aventurra que quieras compartir?",
     "homeSearchInputHing": "Buscando aventureros?",
+    "homeTab1Label": "Inicio",
+    "homeTab2Label": "Crear",
+    "homeTab3Label": "Perfil",    
 
     "tripDetailsPageLabel": "Detalles del viaje",
     "tripDetailsAdmin": "Admin"

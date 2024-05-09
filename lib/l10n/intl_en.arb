@@ -12,6 +12,9 @@
     "homeAppbarTitle": "Hi ",
     "homeTitle": "Another adventure you want to share?",
     "homeSearchInputHing": "Looking for travel mates?",
+    "homeTab1Label": "Home",
+    "homeTab2Label": "Create",
+    "homeTab3Label": "Profile",
     
     "tripDetailsPageLabel": "Trip details",
     "tripDetailsAdmin": "Admin"

@@ -26,6 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeAppbarTitle": MessageLookupByLibrary.simpleMessage("Hi "),
         "homeSearchInputHing":
             MessageLookupByLibrary.simpleMessage("Looking for travel mates?"),
+        "homeTab1Label": MessageLookupByLibrary.simpleMessage("Home"),
+        "homeTab2Label": MessageLookupByLibrary.simpleMessage("Create"),
+        "homeTab3Label": MessageLookupByLibrary.simpleMessage("Profile"),
         "homeTitle": MessageLookupByLibrary.simpleMessage(
             "Another adventure you want to share?"),
         "loginAppleButton":
