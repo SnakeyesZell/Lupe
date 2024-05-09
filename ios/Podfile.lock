@@ -1017,10 +1017,18 @@ PODS:
   - Flutter (1.0.0)
   - flutter_secure_storage (6.0.0):
     - Flutter
+  - google_maps_flutter_ios (0.0.1):
+    - Flutter
+    - GoogleMaps (< 9.0, >= 8.4)
   - google_sign_in_ios (0.0.1):
     - Flutter
     - FlutterMacOS
     - GoogleSignIn (~> 7.0.0)
+  - GoogleMaps (8.4.0):
+    - GoogleMaps/Maps (= 8.4.0)
+  - GoogleMaps/Base (8.4.0)
+  - GoogleMaps/Maps (8.4.0):
+    - GoogleMaps/Base
   - GoogleSignIn (7.0.0):
     - AppAuth (~> 1.5)
     - GTMAppAuth (< 3.0, >= 1.3)
@@ -1150,6 +1158,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
+  - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
@@ -1168,6 +1177,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseFirestoreInternal
     - FirebaseSharedSwift
+    - GoogleMaps
     - GoogleSignIn
     - GoogleUtilities
     - "gRPC-C++"
@@ -1190,6 +1200,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_secure_storage:
     :path: ".symlinks/plugins/flutter_secure_storage/ios"
+  google_maps_flutter_ios:
+    :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
   google_sign_in_ios:
     :path: ".symlinks/plugins/google_sign_in_ios/darwin"
   path_provider_foundation:
@@ -1215,7 +1227,9 @@ SPEC CHECKSUMS:
   FirebaseSharedSwift: 0274086954b1b2d5fd7e829eccc587044d72a4ba
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_secure_storage: 23fc622d89d073675f2eaa109381aefbcf5a49be
+  google_maps_flutter_ios: c454f18e0e22df6ac0e9f2a4df340858f5a3680c
   google_sign_in_ios: 7c205d44fdc266640375c6ac33d96ba3983dbe02
+  GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
   GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
   GoogleUtilities: c56430aef51a1aa57b25da78c3f8397e522c67b7
   "gRPC-C++": e725ef63c4475d7cdb7e2cf16eb0fde84bd9ee51
@@ -1229,6 +1243,6 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
 
-PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+PODFILE CHECKSUM: 1959d098c91d8a792531a723c4a9d7e9f6a01e38
 
 COCOAPODS: 1.15.2
