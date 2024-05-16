@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cristiantabares.lupe">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -6,6 +7,11 @@
         android:label="Lupe"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data 
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBrCgarVkpl6QVsvrp6r3bbGQpoQ-tw6-g"/>
+            
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -23,10 +29,6 @@
               android:resource="@style/NormalTheme"
               />
 
-            <meta-data 
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyDGM-GQiZD8jXQcouRjMuuqXiY0zN3T8EY"
-            />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

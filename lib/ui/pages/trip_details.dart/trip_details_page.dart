@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'provider/trip_details_page_provider.dart';
 
+import 'widgets/trip_details_map_tab.dart';
 import 'widgets/trip_details_title.dart';
 import 'widgets/trip_details_appbar.dart';
 import 'widgets/trip_details_users_tab.dart';
@@ -73,7 +74,7 @@ class _TripDetailsPageState extends State<TripDetailsPage> with SingleTickerProv
             [
               TripDetailsGaleryTab(),
               TripDetailsUsersTab(),
-              TripDetailsUsersTab(),
+              TripDetailsMapTab(),
             ]
           ),
         ),

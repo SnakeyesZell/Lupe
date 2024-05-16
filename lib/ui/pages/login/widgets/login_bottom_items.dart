@@ -56,6 +56,22 @@ class _Buttons extends StatelessWidget
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>
       [
+        (Platform.isIOS) 
+        ? CustomPrimaryButton(
+            withd: withd,
+            label: S.current.loginAppleButton,
+            color: Colors.black,
+            onTap: ()=> this.onTapGetStartedButton(
+              context: context, 
+              authProvider: authProvider,
+              authMethod: AuthMethod.apple,
+            ),
+            leading: const _ButttonIcon(imagePath: AppIcons.appleWhite),
+          )
+        : const SizedBox.shrink(),
+
+        const SizedBox(height: 15),
+
         CustomPrimaryButton(
           withd: withd,
           label: S.current.loginGoogleButton, 
@@ -66,21 +82,6 @@ class _Buttons extends StatelessWidget
           ),
           leading: const _ButttonIcon(imagePath: AppIcons.google),
         ),
-
-        const SizedBox(height: 15),
-
-        (Platform.isIOS) 
-        ? CustomPrimaryButton(
-            withd: withd,
-            label: S.current.loginAppleButton, 
-            onTap: ()=> this.onTapGetStartedButton(
-              context: context, 
-              authProvider: authProvider,
-              authMethod: AuthMethod.apple,
-            ),
-            leading: const _ButttonIcon(imagePath: AppIcons.apple),
-          )
-        : const SizedBox.shrink(),
       ],
     );
   }
@@ -112,7 +113,7 @@ class _ButttonIcon extends StatelessWidget
     double size = (Platform.isAndroid) ? 24 : 31;
 
     return Container(
-      padding: const EdgeInsets.all(5),
+      padding: EdgeInsets.all((Platform.isAndroid) ? 4 : 0),
       margin: EdgeInsets.only(right: (Platform.isAndroid) ? 10 : 5),
       decoration: BoxDecoration(
         color: (Platform.isAndroid) ? Colors.white : null,

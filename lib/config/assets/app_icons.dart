@@ -2,6 +2,7 @@ abstract class AppIcons
 {
   static const String google             = 'assets/icons/google-icon.png';
   static const String apple              = 'assets/icons/apple-icon.png';
+  static const String appleWhite         = 'assets/icons/apple-white-icon.png';
   static const String home               = 'assets/icons/home-icon.svg';
   static const String home2              = 'assets/icons/home2-icon.svg';
   static const String user               = 'assets/icons/user-icon.svg';

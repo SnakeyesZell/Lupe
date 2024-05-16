@@ -7,6 +7,7 @@ class CustomPrimaryButton extends StatelessWidget
   final Widget leading;
   final Widget traling;
   final double? withd;
+  final Color? color;
 
   const CustomPrimaryButton(
   {
@@ -15,18 +16,22 @@ class CustomPrimaryButton extends StatelessWidget
     required this.onTap, 
     this.leading = const SizedBox.shrink(), 
     this.traling = const SizedBox.shrink(), 
-    this.withd,
+    this.withd, 
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) 
   {
+    double height = 60;
+
     return GestureDetector(
       onTap: this.onTap,
       child: Container(
         width: this.withd,
+        height: height,
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          color: (this.color != null) ? this.color : Theme.of(context).primaryColor,
           borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Padding(
